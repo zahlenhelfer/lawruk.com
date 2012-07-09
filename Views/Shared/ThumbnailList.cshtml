@@ -1,0 +1,19 @@
+﻿@model lawrukmvc.ViewModels.ThumbnailListViewModel
+
+<div class="thumbnail-list"> 
+    <ul>
+     @foreach (var item in Model.Items)
+     {
+        <li>
+        <a href="@item.Url">
+        <img src="@item.ThumbnailUrl" height="75" width="100" alt="@item.Title" />        
+        <span class="list-title">@item.Title</span>      
+        <span class="date">Date: @item.DisplayDate</span>
+        </a>
+        @if (Model.EditMode) {
+         @Html.Raw(item.EditLink)
+        }        
+        </li>
+     }
+    </ul>
+</div>

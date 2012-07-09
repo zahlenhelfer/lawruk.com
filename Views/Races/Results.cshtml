@@ -1,0 +1,45 @@
+﻿@using lawrukmvc.ViewModels
+@model List<RaceViewModel>
+       @{
+           ViewBag.Title = "Race Results";           
+       }
+ <table id="table1" class="table table-bordered table-striped table-condensed tablesorter">
+    <thead style="background-color:#999; cursor:pointer;">
+    <tr>
+        <th style="width:110px;">Date</th>
+        <th>Title</th>
+        <th>Distance</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+     @foreach (RaceViewModel race in Model) {
+       <tr>
+           <td>@Html.Raw(race.EditLink)@race.DisplayDate</td>               
+           <td><a href="@race.Url">@race.Title</a></td>
+           <td>@race.Distance</td>
+           <td>@race.City</td>
+           <td>@race.State</td>      
+           <td>@race.TimeText</td>      
+
+       </tr>
+        }
+    </tbody>
+    </table>  
+    
+    <script type="text/javascript" src="/Scripts/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#table1").tablesorter({
+
+                headers:
+            {
+                0: { sorter: "shortDate" }
+            },
+                widgets: ['zebra']
+            });
+        }
+        ); 
+    </script>  

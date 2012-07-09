@@ -1,0 +1,93 @@
+﻿body 
+{
+    font-family:Helvetica;
+    margin:0px; padding:0px
+}
+
+h2 {margin: 5px 0px 5px 0px;}
+
+.container {margin-left:10px; margin-right:10px;}
+
+.navbar 
+{
+    width:100%; height:45px; background-color:Black; margin:0px; padding:0px;
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#333),to(#222));
+    background-image: -webkit-linear-gradient(top,#333,#222);
+}
+.navbar-inner .back-link 
+{
+    display:block; float:left; height:20px; margin:8px 5px 8px 5px; border-color:#333; border-width:1px; padding:3px;
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#777),to(#aaa));
+    background-image: -webkit-linear-gradient(top,#777,#aaa);
+    
+    border-bottom-right-radius: 6px;border-bottom-left-radius: 30px;
+    border-top-right-radius: 6px; border-top-left-radius: 30px;                     
+}
+
+.navbar .brand {
+display: block;
+float: left;
+padding: 9px 3px 3px 40px;
+
+font-size: 24px;
+font-weight: 200;
+line-height: 1;
+color: #999;
+}
+
+.back-button { color:Black; font-size:14px; font-weight:bold; margin:3px; text-decoration:none;}
+.navbar-inner a {text-decoration:none;}
+
+
+
+
+.thumbnail-list ul {margin-left:-50px; margin-right:-10px; border-top-width:1px; border-top-style:solid; border-top-color:#ccc;}
+
+.thumbnail-list li 
+{
+display:block;
+height:75px;
+clear: left;
+list-style-type: none;
+line-height: 14px;
+padding-bottom: 10px;
+border-color:#ccc;
+border-style:solid;
+border-width:0px;
+border-bottom-width:1px;
+padding:0px;
+margin:0px;
+}
+
+.thumbnail-list li img {
+padding-right: 5px;
+float: left;
+}
+
+.thumbnail-list li a {display:block; color:Black; font-weight:bold; font-size:14px; text-decoration:none; height:75px;}
+.thumbnail-list .list-title 
+{
+    display:block;
+    padding:20px 0px 0px 2px;
+}
+
+.thumbnail-list li .date {font-weight:normal;}
+
+.rss-list ul {list-style-type:none; margin-left:-30px;}
+.rss-list li {margin-bottom:15px;}
+.rss-list li img {margin-right:5px;}
+.rss-list li p {margin-top:5px;, margin-bottom:5px;}
+.rss-list li .date {line-height:12px;}
+
+.date {
+margin: 5px 0px 5px 0px;
+color: #999;
+font-size: 12px;
+}
+
+.circle {-webkit-border-radius: 999px; -moz-border-radius: 999px; border-radius: 999px; display:inline-block; width: 15px; height: 15px; } 
+.circle-red { background: red; }
+.circle-orange { background: orange; }
+.circle-blue { background: blue; }
+.circle-yellow { background: yellow; }
+.circle-green { background: green; }

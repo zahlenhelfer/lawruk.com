@@ -1,0 +1,9 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="RightContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="FooterContent" runat="server">
+</asp:Content>

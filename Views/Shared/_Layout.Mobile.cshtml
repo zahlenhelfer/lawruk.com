@@ -1,0 +1,41 @@
+﻿@using lawrukmvc.Helpers;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="/Content/iphone.css" rel="stylesheet" type="text/css" />
+     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> 
+</head>
+<body>
+<div id="page-wrap" class="@Html.Raw(ViewContext.RouteData.Values["Controller"].ToString().ToLower() + " " + ViewContext.RouteData.Values["Action"].ToString().ToLower())">
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <a href="@Helpers.ValueOrDefault(ViewBag.BackPath, "/")" class="back-link">
+        <span class="back-button">@Helpers.ValueOrDefault(ViewBag.BackTitle, "Home")</span></a>
+        <a class="brand">Lawruk.com</a>
+    </div>
+</div>
+<div class="container">
+    <h2>@ViewBag.Title</h2>          
+        @RenderBody()
+        @RenderSection("right", required: false)   
+</div>         
+
+</div>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-2931615-2");
+            pageTracker._trackPageview();
+        } catch (err) { }
+    </script>
+    
+</body>
+</html>

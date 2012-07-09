@@ -1,0 +1,39 @@
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>         
+<link rel="stylesheet" media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+</head>
+<body>
+<div data-role="page" data-theme="d" id="jqm-home">
+<div data-role="header">
+		<h1>Video 1</h1>
+	</div><!-- /header -->
+
+<div id="1" data-role="content">
+<script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
+    <object id="myExperience1504332192" class="BrightcoveExperience video-embed">      
+      <param name="bgcolor" value="#FFFFFF" />
+      <param name="width" value="300" />
+      <param name="height" value="250" />
+      <param name="playerID" value="22526598001" />
+      <param name="publisherID" value="1274177313"/>  
+      <param name="isVid" value="true" />
+
+      <param name="@videoPlayer" value="1504332192" />       
+    </object>
+    <script language="JavaScript" type="text/javascript">
+            $('div').live('pageshow', function(event) {
+            if ($('#1').is(':visible')) {
+                    brightcove.createExperiencesPostLoad();
+                }
+            }); 
+     </script>
+</div>
+<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+
+</div>
+</body>
+</html>

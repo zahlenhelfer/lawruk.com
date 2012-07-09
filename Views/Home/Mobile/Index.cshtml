@@ -1,0 +1,7 @@
+﻿@using lawrukmvc.Helpers;
+@{    
+    Layout = "~/Views/Shared/Mobile/_Layout.cshtml";
+    ViewBag.Title = "Lawruk.com";
+}
+<h3>News</h3>
+@Html.Partial("RSSList", Helpers.GetRSSList("http://rss.news.yahoo.com/rss/topstories", 20))

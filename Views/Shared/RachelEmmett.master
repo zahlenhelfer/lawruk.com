@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title><asp:ContentPlaceHolder ID="HeadTitleContent" runat="server"></asp:ContentPlaceHolder></title>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <link href="/content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+    <style>
+    .navbar-inner { background-color:#00AA00; background-image:}
+    </style>
+</head>
+<body>
+<div id="pae-wrap" class="<%=ViewContext.RouteData.Values["Controller"].ToString().ToLower() + "-" + ViewContext.RouteData.Values["Action"].ToString().ToLower()%>">
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+        <a class="brand" href="/">Rachel and Emmett</a>
+        <ul class="nav">
+        <li><a href="/rachelemmett">Home</a></li>          
+        <li><a href="/rachelemmett/photos">Photos</a></li>
+        <li><a href="/rachelemmett/weather">Weather</a></li>
+        <li><a href="/rachelemmett/wedding-party">Wedding Party</a></li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <div class="row">
+            <div class="span8">            
+                <h2><asp:ContentPlaceHolder ID="TitleContent" runat="server"></asp:ContentPlaceHolder></h2>         
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
+            <div class="span4"><asp:ContentPlaceHolder ID="RightContent" runat="server"></asp:ContentPlaceHolder></div>
+        </div>
+    </div>
+</div>
+
+</div>
+ <script type="text/javascript">
+     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-2931615-2");
+            pageTracker._trackPageview();
+        } catch (err) { }
+    </script>   
+</body>
+</html>
+
+

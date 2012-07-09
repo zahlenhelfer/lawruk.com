@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <link href="/content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="page-wrap" class="@ViewContext.RouteData.Values["Controller"].ToString().ToLower()-@ViewContext.RouteData.Values["Action"].ToString().ToLower()">
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+        <a class="brand" href="/">Lawruk.com</a>
+        <ul class="nav">        
+        <li><a href="/about">About</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/metro">Metro</a></li>
+        <li><a href="/weather">Weather</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/rome">Rome</a></li>
+        <li><a href="/videos">Videos</a></li>
+        <li><a href="/rachelemmett">Rachel and Emmett</a></li>
+        </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <div class="row">
+            <div class="span8">
+                <h2>@ViewBag.Title</h2>        
+                @RenderBody()
+            </div>
+            <div class="span4">
+                @RenderSection("right", required: false)                 
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+ <script type="text/javascript">
+     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-2931615-2");
+            pageTracker._trackPageview();
+        } catch (err) { }
+    </script>   
+</body>
+</html>
+

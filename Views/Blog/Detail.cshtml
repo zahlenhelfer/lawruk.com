@@ -1,0 +1,21 @@
+﻿@model lawrukmvc.ViewModels.BlogPostViewModel
+
+@{
+    ViewBag.Title = Model.BlogPost.Title;
+    ViewBag.BackTitle = "Blog";
+    ViewBag.BackPath = "/blog";
+}
+
+<p class="blog-detail-date">Date: @Model.DisplayDate</p>
+    <div id="body">
+    @Html.Raw(Model.BlogPost.Body)
+    </div>    
+    @if (!lawrukmvc.Helpers.Mobile.ShowMobileSite())
+    {
+    <div id="facebook-comments">
+        <h3>Facebook Comments</h3>
+        <div id="fb-root"></div>
+        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+        <fb:comments href="http://www.lawruk.com/blog/<%=Model.BlogPost.Id %>/facebook"></fb:comments>
+    </div> 
+    }   

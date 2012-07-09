@@ -1,0 +1,24 @@
+﻿@model lawrukmvc.ViewModels.MetroViewModel
+@{
+    ViewBag.Title = @Model.CurrentMetroStation.Title;
+    ViewBag.BackTitle = "Metro";
+    ViewBag.BackPath = "/metro";
+}
+<div id="metro">
+
+    @Html.Raw(Model.CurrentMetroStation.Body)
+        <br />
+    <p style="clear:both">Courtesy of <a href="http://www.wmata.com/rail/stations.cfm">wmata.com</a></p>
+</div>
+
+@section right
+{
+<h3>Other Metro Stations</h3>
+<ul>
+    @foreach (var metroStation in Model.MetroStations.Where(m=>m.Lines.Contains(Model.CurrentMetroStation.Lines[0])))
+       { 
+    <li> <a href="/metro/@metroStation.Tag">@metroStation.Title</a></li>
+    } 
+    <li><a href="/metro" style="font-size:larger;">Show All Stations</a></li>
+</ul>
+}
