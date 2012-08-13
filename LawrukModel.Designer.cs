@@ -68,6 +68,22 @@ namespace lawrukmvc
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<BlogPost> BlogPosts
+        {
+            get
+            {
+                if ((_BlogPosts == null))
+                {
+                    _BlogPosts = base.CreateObjectSet<BlogPost>("BlogPosts");
+                }
+                return _BlogPosts;
+            }
+        }
+        private ObjectSet<BlogPost> _BlogPosts;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<BlogPostTag> BlogPostTags
         {
             get
@@ -80,86 +96,6 @@ namespace lawrukmvc
             }
         }
         private ObjectSet<BlogPostTag> _BlogPostTags;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Person> People
-        {
-            get
-            {
-                if ((_People == null))
-                {
-                    _People = base.CreateObjectSet<Person>("People");
-                }
-                return _People;
-            }
-        }
-        private ObjectSet<Person> _People;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Tag> Tags
-        {
-            get
-            {
-                if ((_Tags == null))
-                {
-                    _Tags = base.CreateObjectSet<Tag>("Tags");
-                }
-                return _Tags;
-            }
-        }
-        private ObjectSet<Tag> _Tags;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<VideoTag> VideoTags
-        {
-            get
-            {
-                if ((_VideoTags == null))
-                {
-                    _VideoTags = base.CreateObjectSet<VideoTag>("VideoTags");
-                }
-                return _VideoTags;
-            }
-        }
-        private ObjectSet<VideoTag> _VideoTags;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Video> Videos
-        {
-            get
-            {
-                if ((_Videos == null))
-                {
-                    _Videos = base.CreateObjectSet<Video>("Videos");
-                }
-                return _Videos;
-            }
-        }
-        private ObjectSet<Video> _Videos;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FamousDeveloper> FamousDevelopers
-        {
-            get
-            {
-                if ((_FamousDevelopers == null))
-                {
-                    _FamousDevelopers = base.CreateObjectSet<FamousDeveloper>("FamousDevelopers");
-                }
-                return _FamousDevelopers;
-            }
-        }
-        private ObjectSet<FamousDeveloper> _FamousDevelopers;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -180,6 +116,38 @@ namespace lawrukmvc
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<FamousDeveloper> FamousDevelopers
+        {
+            get
+            {
+                if ((_FamousDevelopers == null))
+                {
+                    _FamousDevelopers = base.CreateObjectSet<FamousDeveloper>("FamousDevelopers");
+                }
+                return _FamousDevelopers;
+            }
+        }
+        private ObjectSet<FamousDeveloper> _FamousDevelopers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Person> People
+        {
+            get
+            {
+                if ((_People == null))
+                {
+                    _People = base.CreateObjectSet<Person>("People");
+                }
+                return _People;
+            }
+        }
+        private ObjectSet<Person> _People;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<RaceResult> RaceResults
         {
             get
@@ -196,21 +164,93 @@ namespace lawrukmvc
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<BlogPost> BlogPosts
+        public ObjectSet<Route> Routes
         {
             get
             {
-                if ((_BlogPosts == null))
+                if ((_Routes == null))
                 {
-                    _BlogPosts = base.CreateObjectSet<BlogPost>("BlogPosts");
+                    _Routes = base.CreateObjectSet<Route>("Routes");
                 }
-                return _BlogPosts;
+                return _Routes;
             }
         }
-        private ObjectSet<BlogPost> _BlogPosts;
+        private ObjectSet<Route> _Routes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Tag> Tags
+        {
+            get
+            {
+                if ((_Tags == null))
+                {
+                    _Tags = base.CreateObjectSet<Tag>("Tags");
+                }
+                return _Tags;
+            }
+        }
+        private ObjectSet<Tag> _Tags;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Video> Videos
+        {
+            get
+            {
+                if ((_Videos == null))
+                {
+                    _Videos = base.CreateObjectSet<Video>("Videos");
+                }
+                return _Videos;
+            }
+        }
+        private ObjectSet<Video> _Videos;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<VideoTag> VideoTags
+        {
+            get
+            {
+                if ((_VideoTags == null))
+                {
+                    _VideoTags = base.CreateObjectSet<VideoTag>("VideoTags");
+                }
+                return _VideoTags;
+            }
+        }
+        private ObjectSet<VideoTag> _VideoTags;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<OlympicResult> OlympicResults
+        {
+            get
+            {
+                if ((_OlympicResults == null))
+                {
+                    _OlympicResults = base.CreateObjectSet<OlympicResult>("OlympicResults");
+                }
+                return _OlympicResults;
+            }
+        }
+        private ObjectSet<OlympicResult> _OlympicResults;
 
         #endregion
         #region AddTo Methods
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BlogPosts EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBlogPosts(BlogPost blogPost)
+        {
+            base.AddObject("BlogPosts", blogPost);
+        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the BlogPostTags EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -218,46 +258,6 @@ namespace lawrukmvc
         public void AddToBlogPostTags(BlogPostTag blogPostTag)
         {
             base.AddObject("BlogPostTags", blogPostTag);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the People EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToPeople(Person person)
-        {
-            base.AddObject("People", person);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Tags EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToTags(Tag tag)
-        {
-            base.AddObject("Tags", tag);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the VideoTags EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToVideoTags(VideoTag videoTag)
-        {
-            base.AddObject("VideoTags", videoTag);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Videos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToVideos(Video video)
-        {
-            base.AddObject("Videos", video);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FamousDevelopers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFamousDevelopers(FamousDeveloper famousDeveloper)
-        {
-            base.AddObject("FamousDevelopers", famousDeveloper);
         }
     
         /// <summary>
@@ -269,6 +269,22 @@ namespace lawrukmvc
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the FamousDevelopers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFamousDevelopers(FamousDeveloper famousDeveloper)
+        {
+            base.AddObject("FamousDevelopers", famousDeveloper);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the People EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPeople(Person person)
+        {
+            base.AddObject("People", person);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the RaceResults EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToRaceResults(RaceResult raceResult)
@@ -277,11 +293,43 @@ namespace lawrukmvc
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the BlogPosts EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Routes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToBlogPosts(BlogPost blogPost)
+        public void AddToRoutes(Route route)
         {
-            base.AddObject("BlogPosts", blogPost);
+            base.AddObject("Routes", route);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Tags EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTags(Tag tag)
+        {
+            base.AddObject("Tags", tag);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Videos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToVideos(Video video)
+        {
+            base.AddObject("Videos", video);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the VideoTags EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToVideoTags(VideoTag videoTag)
+        {
+            base.AddObject("VideoTags", videoTag);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the OlympicResults EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToOlympicResults(OlympicResult olympicResult)
+        {
+            base.AddObject("OlympicResults", olympicResult);
         }
 
         #endregion
@@ -1116,6 +1164,269 @@ namespace lawrukmvc
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="lawrukmvc.Models", Name="OlympicResult")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class OlympicResult : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new OlympicResult object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="place">Initial value of the Place property.</param>
+        /// <param name="event">Initial value of the Event property.</param>
+        /// <param name="year">Initial value of the Year property.</param>
+        /// <param name="city">Initial value of the City property.</param>
+        /// <param name="firstName">Initial value of the FirstName property.</param>
+        /// <param name="lastName">Initial value of the LastName property.</param>
+        /// <param name="time">Initial value of the Time property.</param>
+        /// <param name="gender">Initial value of the Gender property.</param>
+        public static OlympicResult CreateOlympicResult(global::System.Int32 id, global::System.Int32 place, global::System.String @event, global::System.Int32 year, global::System.String city, global::System.String firstName, global::System.String lastName, global::System.String time, global::System.String gender)
+        {
+            OlympicResult olympicResult = new OlympicResult();
+            olympicResult.Id = id;
+            olympicResult.Place = place;
+            olympicResult.Event = @event;
+            olympicResult.Year = year;
+            olympicResult.City = city;
+            olympicResult.FirstName = firstName;
+            olympicResult.LastName = lastName;
+            olympicResult.Time = time;
+            olympicResult.Gender = gender;
+            return olympicResult;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Place
+        {
+            get
+            {
+                return _Place;
+            }
+            set
+            {
+                OnPlaceChanging(value);
+                ReportPropertyChanging("Place");
+                _Place = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Place");
+                OnPlaceChanged();
+            }
+        }
+        private global::System.Int32 _Place;
+        partial void OnPlaceChanging(global::System.Int32 value);
+        partial void OnPlaceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Event
+        {
+            get
+            {
+                return _Event;
+            }
+            set
+            {
+                OnEventChanging(value);
+                ReportPropertyChanging("Event");
+                _Event = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Event");
+                OnEventChanged();
+            }
+        }
+        private global::System.String _Event;
+        partial void OnEventChanging(global::System.String value);
+        partial void OnEventChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Year
+        {
+            get
+            {
+                return _Year;
+            }
+            set
+            {
+                OnYearChanging(value);
+                ReportPropertyChanging("Year");
+                _Year = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Year");
+                OnYearChanged();
+            }
+        }
+        private global::System.Int32 _Year;
+        partial void OnYearChanging(global::System.Int32 value);
+        partial void OnYearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String City
+        {
+            get
+            {
+                return _City;
+            }
+            set
+            {
+                OnCityChanging(value);
+                ReportPropertyChanging("City");
+                _City = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("City");
+                OnCityChanged();
+            }
+        }
+        private global::System.String _City;
+        partial void OnCityChanging(global::System.String value);
+        partial void OnCityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FirstName
+        {
+            get
+            {
+                return _FirstName;
+            }
+            set
+            {
+                OnFirstNameChanging(value);
+                ReportPropertyChanging("FirstName");
+                _FirstName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FirstName");
+                OnFirstNameChanged();
+            }
+        }
+        private global::System.String _FirstName;
+        partial void OnFirstNameChanging(global::System.String value);
+        partial void OnFirstNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LastName
+        {
+            get
+            {
+                return _LastName;
+            }
+            set
+            {
+                OnLastNameChanging(value);
+                ReportPropertyChanging("LastName");
+                _LastName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LastName");
+                OnLastNameChanged();
+            }
+        }
+        private global::System.String _LastName;
+        partial void OnLastNameChanging(global::System.String value);
+        partial void OnLastNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Time
+        {
+            get
+            {
+                return _Time;
+            }
+            set
+            {
+                OnTimeChanging(value);
+                ReportPropertyChanging("Time");
+                _Time = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Time");
+                OnTimeChanged();
+            }
+        }
+        private global::System.String _Time;
+        partial void OnTimeChanging(global::System.String value);
+        partial void OnTimeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Gender
+        {
+            get
+            {
+                return _Gender;
+            }
+            set
+            {
+                OnGenderChanging(value);
+                ReportPropertyChanging("Gender");
+                _Gender = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Gender");
+                OnGenderChanged();
+            }
+        }
+        private global::System.String _Gender;
+        partial void OnGenderChanging(global::System.String value);
+        partial void OnGenderChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="lawrukmvc.Models", Name="Person")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1451,6 +1762,54 @@ namespace lawrukmvc
         private Nullable<global::System.Int64> _CellPhone;
         partial void OnCellPhoneChanging(Nullable<global::System.Int64> value);
         partial void OnCellPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GoogleId
+        {
+            get
+            {
+                return _GoogleId;
+            }
+            set
+            {
+                OnGoogleIdChanging(value);
+                ReportPropertyChanging("GoogleId");
+                _GoogleId = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GoogleId");
+                OnGoogleIdChanged();
+            }
+        }
+        private global::System.String _GoogleId;
+        partial void OnGoogleIdChanging(global::System.String value);
+        partial void OnGoogleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String YahooId
+        {
+            get
+            {
+                return _YahooId;
+            }
+            set
+            {
+                OnYahooIdChanging(value);
+                ReportPropertyChanging("YahooId");
+                _YahooId = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("YahooId");
+                OnYahooIdChanged();
+            }
+        }
+        private global::System.String _YahooId;
+        partial void OnYahooIdChanging(global::System.String value);
+        partial void OnYahooIdChanged();
 
         #endregion
     
@@ -1688,6 +2047,217 @@ namespace lawrukmvc
         private global::System.Int32 _Seconds;
         partial void OnSecondsChanging(global::System.Int32 value);
         partial void OnSecondsChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="lawrukmvc.Models", Name="Route")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Route : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Route object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="url">Initial value of the Url property.</param>
+        /// <param name="body">Initial value of the Body property.</param>
+        /// <param name="run">Initial value of the Run property.</param>
+        /// <param name="hike">Initial value of the Hike property.</param>
+        /// <param name="distance">Initial value of the Distance property.</param>
+        public static Route CreateRoute(global::System.Int32 id, global::System.String title, global::System.String url, global::System.String body, global::System.Boolean run, global::System.Boolean hike, global::System.Double distance)
+        {
+            Route route = new Route();
+            route.Id = id;
+            route.Title = title;
+            route.Url = url;
+            route.Body = body;
+            route.Run = run;
+            route.Hike = hike;
+            route.Distance = distance;
+            return route;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Url
+        {
+            get
+            {
+                return _Url;
+            }
+            set
+            {
+                OnUrlChanging(value);
+                ReportPropertyChanging("Url");
+                _Url = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Url");
+                OnUrlChanged();
+            }
+        }
+        private global::System.String _Url;
+        partial void OnUrlChanging(global::System.String value);
+        partial void OnUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Body
+        {
+            get
+            {
+                return _Body;
+            }
+            set
+            {
+                OnBodyChanging(value);
+                ReportPropertyChanging("Body");
+                _Body = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Body");
+                OnBodyChanged();
+            }
+        }
+        private global::System.String _Body;
+        partial void OnBodyChanging(global::System.String value);
+        partial void OnBodyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Run
+        {
+            get
+            {
+                return _Run;
+            }
+            set
+            {
+                OnRunChanging(value);
+                ReportPropertyChanging("Run");
+                _Run = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Run");
+                OnRunChanged();
+            }
+        }
+        private global::System.Boolean _Run;
+        partial void OnRunChanging(global::System.Boolean value);
+        partial void OnRunChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Hike
+        {
+            get
+            {
+                return _Hike;
+            }
+            set
+            {
+                OnHikeChanging(value);
+                ReportPropertyChanging("Hike");
+                _Hike = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Hike");
+                OnHikeChanged();
+            }
+        }
+        private global::System.Boolean _Hike;
+        partial void OnHikeChanging(global::System.Boolean value);
+        partial void OnHikeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double Distance
+        {
+            get
+            {
+                return _Distance;
+            }
+            set
+            {
+                OnDistanceChanging(value);
+                ReportPropertyChanging("Distance");
+                _Distance = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Distance");
+                OnDistanceChanged();
+            }
+        }
+        private global::System.Double _Distance;
+        partial void OnDistanceChanging(global::System.Double value);
+        partial void OnDistanceChanged();
 
         #endregion
     

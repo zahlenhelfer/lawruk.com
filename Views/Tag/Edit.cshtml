@@ -1,0 +1,11 @@
+﻿@model lawrukmvc.Tag
+@{
+    ViewBag.Title = "Tags";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.TextBox("title",Model.Title)
+    <h3>Submit:</h3>
+    <input type="submit" value="Submit" />
+}

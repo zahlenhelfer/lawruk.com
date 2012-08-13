@@ -58,7 +58,7 @@ namespace lawrukmvc.ViewModels
                     return "";
                 }
                 int temp;
-                string url;
+                string url ="";
                 if (int.TryParse(FamousDeveloper.StackOverflowUrl, out temp))
                 {
                     url = FamousDeveloper.StackOverflowUrl + "/" + FamousDeveloper.FirstName + "-" + FamousDeveloper.LastName;

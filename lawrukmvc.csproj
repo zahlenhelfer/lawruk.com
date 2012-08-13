@@ -88,9 +88,11 @@
     <Compile Include="Controllers\MarcController.cs" />
     <Compile Include="Controllers\MetroController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\OlympicsController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="Controllers\RacesController.cs" />
     <Compile Include="Controllers\RachelEmmettController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,12 +141,14 @@
     <Compile Include="ViewModels\MetroStationsViewModel.cs" />
     <Compile Include="ViewModels\MetroViewModel.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
+    <Compile Include="ViewModels\OlympicResultViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
     <Compile Include="ViewModels\PhotosViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\PhotoViewModel.cs" />
     <Compile Include="ViewModels\RaceViewModel.cs" />
     <Compile Include="ViewModels\SyndicationItemViewModel.cs" />
+    <Compile Include="ViewModels\TagsViewModel.cs" />
     <Compile Include="ViewModels\TagTitleUrlListViewModel.cs" />
     <Compile Include="ViewModels\ThumbnailListViewModel.cs" />
     <Compile Include="ViewModels\TitleUrlListViewModel.cs" />
@@ -343,6 +347,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Video\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\TagList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tag\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tag\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\News\Index.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\News\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Olympics.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Olympics\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

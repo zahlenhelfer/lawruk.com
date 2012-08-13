@@ -1,0 +1,9 @@
+﻿@model lawrukmvc.ViewModels.NewsViewModel
+@using lawrukmvc.Helpers
+@{
+    ViewBag.Title = "News " + Model.CurrentRSSFeed.Title;
+    ViewBag.BackTitle = "News";
+    ViewBag.BackPath = "/news";
+}
+@Html.Partial("RSSList", Helpers.GetRSSList(Model.CurrentRSSFeed.Url, 20))
+

@@ -10,8 +10,10 @@
           <EntitySet Name="BlogPostTag" EntityType="lawrukModel.Store.BlogPostTag" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CalendarEntry" EntityType="lawrukModel.Store.CalendarEntry" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FamousDeveloper" EntityType="lawrukModel.Store.FamousDeveloper" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OlympicResult" EntityType="lawrukModel.Store.OlympicResult" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Person" EntityType="lawrukModel.Store.Person" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RaceResult" EntityType="lawrukModel.Store.RaceResult" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Route" EntityType="lawrukModel.Store.Route" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Tag" EntityType="lawrukModel.Store.Tag" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Video" EntityType="lawrukModel.Store.Video" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="VideoTag" EntityType="lawrukModel.Store.VideoTag" store:Type="Tables" Schema="dbo" />
@@ -64,6 +66,20 @@
           <Property Name="PrimaryLanguage" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="Nickname" Type="nvarchar" Nullable="false" MaxLength="20" />
         </EntityType>
+        <EntityType Name="OlympicResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Place" Type="int" Nullable="false" />
+          <Property Name="Event" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Time" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Gender" Type="varchar" Nullable="false" MaxLength="1" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="Id" />
@@ -81,6 +97,8 @@
           <Property Name="State" Type="varchar" MaxLength="2" />
           <Property Name="Zip" Type="varchar" MaxLength="5" />
           <Property Name="CellPhone" Type="bigint" />
+          <Property Name="GoogleId" Type="varchar" MaxLength="50" />
+          <Property Name="YahooId" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="RaceResult">
           <Key>
@@ -94,6 +112,22 @@
           <Property Name="State" Type="varchar" Nullable="false" MaxLength="2" />
           <Property Name="Date" Type="smalldatetime" Nullable="false" />
           <Property Name="Seconds" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6005: The data type 'geography' is not supported; the column 'StartLocation' in table 'lawruk.dbo.Route' was excluded.
+      warning 6005: The data type 'geography' is not supported; the column 'EndLocation' in table 'lawruk.dbo.Route' was excluded.
+      -->
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Url" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Body" Type="varchar(max)" Nullable="false" />
+          <Property Name="Run" Type="bit" Nullable="false" />
+          <Property Name="Hike" Type="bit" Nullable="false" />
+          <Property Name="Distance" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -124,108 +158,18 @@
     <edmx:ConceptualModels>
       <Schema Namespace="lawrukmvc.Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="lawrukEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BlogPostTags" EntityType="lawrukmvc.Models.BlogPostTag" />
-          <EntitySet Name="People" EntityType="lawrukmvc.Models.Person" />
-          <EntitySet Name="Tags" EntityType="lawrukmvc.Models.Tag" />
-          <EntitySet Name="VideoTags" EntityType="lawrukmvc.Models.VideoTag" />
-          <EntitySet Name="Videos" EntityType="lawrukmvc.Models.Video" />
-          <EntitySet Name="FamousDevelopers" EntityType="lawrukmvc.Models.FamousDeveloper" />
-          <EntitySet Name="CalendarEntries" EntityType="lawrukmvc.Models.CalendarEntry" />
-          <EntitySet Name="RaceResults" EntityType="lawrukmvc.Models.RaceResult" />
           <EntitySet Name="BlogPosts" EntityType="lawrukmvc.Models.BlogPost" />
+          <EntitySet Name="BlogPostTags" EntityType="lawrukmvc.Models.BlogPostTag" />
+          <EntitySet Name="CalendarEntries" EntityType="lawrukmvc.Models.CalendarEntry" />
+          <EntitySet Name="FamousDevelopers" EntityType="lawrukmvc.Models.FamousDeveloper" />
+          <EntitySet Name="People" EntityType="lawrukmvc.Models.Person" />
+          <EntitySet Name="RaceResults" EntityType="lawrukmvc.Models.RaceResult" />
+          <EntitySet Name="Routes" EntityType="lawrukmvc.Models.Route" />
+          <EntitySet Name="Tags" EntityType="lawrukmvc.Models.Tag" />
+          <EntitySet Name="Videos" EntityType="lawrukmvc.Models.Video" />
+          <EntitySet Name="VideoTags" EntityType="lawrukmvc.Models.VideoTag" />
+          <EntitySet Name="OlympicResults" EntityType="lawrukmvc.Models.OlympicResult" />
         </EntityContainer>
-        <EntityType Name="BlogPostTag">
-          <Key>
-            <PropertyRef Name="BlogPostId" />
-            <PropertyRef Name="TagId" />
-          </Key>
-          <Property Name="BlogPostId" Type="Int32" Nullable="false" />
-          <Property Name="TagId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Person">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="Url" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="BirthdayYear" Type="Int32" />
-          <Property Name="BirthdayMonth" Type="Int32" />
-          <Property Name="BirthdayDay" Type="Int32" />
-          <Property Name="Address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
-          <Property Name="Zip" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
-          <Property Name="CellPhone" Type="Int64" />
-        </EntityType>
-        <EntityType Name="Tag">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="VideoTag">
-          <Key>
-            <PropertyRef Name="VideoId" />
-            <PropertyRef Name="TagId" />
-          </Key>
-          <Property Type="Int32" Name="VideoId" Nullable="false" />
-          <Property Type="Int32" Name="TagId" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Video">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="YouTubeId" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="Date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="FamousDeveloper">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Summary" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="StackOverflowUrl" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WikipediaUrl" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Websites" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Books" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TwitterUrl" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FacebookUrl" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PhotoUrl" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PrimaryLanguage" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Nickname" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="CalendarEntry">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="Date" Nullable="false" />
-          <Property Type="String" Name="Url" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="Type" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RaceResult">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Distance" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Url" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="State" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Date" Nullable="false" Type="DateTime" />
-          <Property Type="Int32" Name="Seconds" Nullable="false" />
-        </EntityType>
         <EntityType Name="BlogPost">
           <Key>
             <PropertyRef Name="Id" />
@@ -237,48 +181,158 @@
           <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FlickrImageUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="BlogPostTag">
+          <Key>
+            <PropertyRef Name="BlogPostId" />
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Type="Int32" Name="BlogPostId" Nullable="false" />
+          <Property Type="Int32" Name="TagId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CalendarEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamousDeveloper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Summary" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StackOverflowUrl" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WikipediaUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Websites" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Books" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TwitterUrl" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FacebookUrl" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhotoUrl" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PrimaryLanguage" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Nickname" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Url" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="BirthdayYear" />
+          <Property Type="Int32" Name="BirthdayMonth" />
+          <Property Type="Int32" Name="BirthdayDay" />
+          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Zip" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="CellPhone" />
+          <Property Type="String" Name="GoogleId" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YahooId" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RaceResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Distance" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Seconds" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Run" Nullable="false" />
+          <Property Type="Boolean" Name="Hike" Nullable="false" />
+          <Property Type="Double" Name="Distance" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YouTubeId" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoTag">
+          <Key>
+            <PropertyRef Name="VideoId" />
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Type="Int32" Name="VideoId" Nullable="false" />
+          <Property Type="Int32" Name="TagId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OlympicResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Place" Nullable="false" />
+          <Property Type="String" Name="Event" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Year" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Time" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="lawrukModelStoreContainer" CdmEntityContainer="lawrukEntities">
-          <EntitySetMapping Name="BlogPostTags"><EntityTypeMapping TypeName="lawrukmvc.Models.BlogPostTag"><MappingFragment StoreEntitySet="BlogPostTag">
-            <ScalarProperty Name="BlogPostId" ColumnName="BlogPostId" />
-            <ScalarProperty Name="TagId" ColumnName="TagId" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="People"><EntityTypeMapping TypeName="lawrukmvc.Models.Person"><MappingFragment StoreEntitySet="Person">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-            <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-            <ScalarProperty Name="LastName" ColumnName="LastName" />
-            <ScalarProperty Name="Url" ColumnName="Url" />
-            <ScalarProperty Name="BirthdayYear" ColumnName="BirthdayYear" />
-            <ScalarProperty Name="BirthdayMonth" ColumnName="BirthdayMonth" />
-            <ScalarProperty Name="BirthdayDay" ColumnName="BirthdayDay" />
-            <ScalarProperty Name="Address" ColumnName="Address" />
-            <ScalarProperty Name="City" ColumnName="City" />
-            <ScalarProperty Name="State" ColumnName="State" />
-            <ScalarProperty Name="Zip" ColumnName="Zip" />
-            <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Tags"><EntityTypeMapping TypeName="lawrukmvc.Models.Tag"><MappingFragment StoreEntitySet="Tag">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="VideoTags">
-            <EntityTypeMapping TypeName="lawrukmvc.Models.VideoTag">
-              <MappingFragment StoreEntitySet="VideoTag">
-                <ScalarProperty Name="TagId" ColumnName="TagId" />
-                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+          <EntitySetMapping Name="BlogPosts">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.BlogPost">
+              <MappingFragment StoreEntitySet="BlogPost">
+                <ScalarProperty Name="FlickrImageUrl" ColumnName="FlickrImageUrl" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Videos">
-            <EntityTypeMapping TypeName="lawrukmvc.Models.Video">
-              <MappingFragment StoreEntitySet="Video">
+          <EntitySetMapping Name="BlogPostTags">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.BlogPostTag">
+              <MappingFragment StoreEntitySet="BlogPostTag">
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="BlogPostId" ColumnName="BlogPostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalendarEntries">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.CalendarEntry">
+              <MappingFragment StoreEntitySet="CalendarEntry">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="YouTubeId" ColumnName="YouTubeId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -304,13 +358,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CalendarEntries">
-            <EntityTypeMapping TypeName="lawrukmvc.Models.CalendarEntry">
-              <MappingFragment StoreEntitySet="CalendarEntry">
-                <ScalarProperty Name="Type" ColumnName="Type" />
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="YahooId" ColumnName="YahooId" />
+                <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BirthdayDay" ColumnName="BirthdayDay" />
+                <ScalarProperty Name="BirthdayMonth" ColumnName="BirthdayMonth" />
+                <ScalarProperty Name="BirthdayYear" ColumnName="BirthdayYear" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -329,14 +393,56 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BlogPosts">
-            <EntityTypeMapping TypeName="lawrukmvc.Models.BlogPost">
-              <MappingFragment StoreEntitySet="BlogPost">
-                <ScalarProperty Name="FlickrImageUrl" ColumnName="FlickrImageUrl" />
+          <EntitySetMapping Name="Routes">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.Route">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Hike" ColumnName="Hike" />
+                <ScalarProperty Name="Run" ColumnName="Run" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.Video">
+              <MappingFragment StoreEntitySet="Video">
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="YouTubeId" ColumnName="YouTubeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoTags">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.VideoTag">
+              <MappingFragment StoreEntitySet="VideoTag">
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OlympicResults">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.OlympicResult">
+              <MappingFragment StoreEntitySet="OlympicResult">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -361,16 +467,18 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="LawrukModel">
-        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPostTag" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583335" IsExpanded="true" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.Person" Width="1.5" PointX="0.5" PointY="2.875" Height="3.5186979166666656" IsExpanded="true" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.Tag" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4033821614583335" IsExpanded="true" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.VideoTag" Width="1.5" PointX="5.375" PointY="3.75" Height="1.4033821614583322" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.Video" Width="1.5" PointX="5.375" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.FamousDeveloper" Width="1.5" PointX="3.375" PointY="6.75" Height="3.7109993489583317" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.CalendarEntry" Width="1.5" PointX="5.375" PointY="6.75" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.RaceResult" PointX="0.75" PointY="6.75" Width="1.5" Height="2.0853483072916674" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPost" Width="1.5" PointX="7.375" PointY="0.75" Height="2.1725878906249996" />
+      <Diagram Name="LawrukModel" ZoomLevel="55">
+        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPost" Width="1.5" PointX="0.75" PointY="0.75" Height="2.172587890625" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPostTag" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583335" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.CalendarEntry" Width="1.5" PointX="0.75" PointY="3.75" Height="1.9802864583333322" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.FamousDeveloper" Width="1.5" PointX="2.75" PointY="3.75" Height="3.7109993489583335" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Person" Width="1.5" PointX="4.75" PointY="0.75" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.RaceResult" Width="1.5" PointX="4.75" PointY="5.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Route" Width="1.5" PointX="6.75" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Tag" Width="1.5" PointX="6.75" PointY="4.75" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Video" Width="1.5" PointX="6.75" PointY="7.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.VideoTag" Width="1.5" PointX="8.75" PointY="0.75" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.OlympicResult" Width="1.5" PointX="0.75" PointY="8.75" Height="2.7494921875000031" />
       </Diagram>
     </Diagrams>
   </Designer>

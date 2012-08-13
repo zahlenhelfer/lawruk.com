@@ -22,6 +22,11 @@ namespace lawrukmvc.Controllers
             return thumbnailList;
         }
 
+        public override object GetTaggedList(string tag)
+        {
+            return base.GetTaggedList(tag);
+        }
+
         public override EntityObject NewItem()
         {
             return new Video();
@@ -29,7 +34,7 @@ namespace lawrukmvc.Controllers
 
         public override EntityObject GetItem(int id)
         {
-            return lawrukEntities.Videos.FirstOrDefault(i => i.Id == id);
+            return GetVideo(id);
         }
 
         private Video GetVideo(int id)

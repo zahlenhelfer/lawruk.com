@@ -1,0 +1,6 @@
+﻿@model List<lawrukmvc.ViewModels.TagTitleUrlListViewModel>
+
+@foreach (var tag in Model)
+{
+    <a href="/tagged/@tag.BaseUrl">@tag.Title</a>
+}

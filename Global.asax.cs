@@ -32,9 +32,13 @@ namespace lawrukmvc
 
             routes.MapRoute("CalendarEdit", "calendar/edit/{tag}", new { controller = "Calendar", action = "Edit", tag = "" });
             routes.MapRoute("Calendar", "calendar/{tag}", new { controller = "Calendar", action = "Index", tag = "" });
-            routes.MapRoute("Video", "videos", new { controller = "Video", action = "Index" });
+            routes.MapRoute("Videos", "videos", new { controller = "Video", action = "Index" });
             routes.MapRoute("VideoEdit", "videos/edit/{tag}", new { controller = "Video", action = "Edit", tag = "" });
             routes.MapRoute("VideoDetail", "videos/{id}/{tag}", new { controller = "Video", action = "Detail", id = 0 });
+
+            routes.MapRoute("Tags", "tags", new { controller = "Tag", action = "Index" });
+            routes.MapRoute("TagEdit", "tags/edit/{tag}", new { controller = "Tag", action = "Edit", tag = "" });
+            routes.MapRoute("TagDetail", "tags/{id}/{tag}", new { controller = "Tag", action = "Detail", id = 0 });
 
             routes.MapRoute("Data", "data/{tag}", new { controller = "Data", action = "Index", tag = "default" });
             routes.MapRoute("Energy", "energy/{tag}", new { controller = "Energy", action = "Index", tag = "" });
@@ -43,10 +47,13 @@ namespace lawrukmvc
             routes.MapRoute("Metro", "metro/{tag}", new { controller = "Metro", action = "Index", tag = "" });
             routes.MapRoute("RachelEmmettPhotos", "rachelemmett/photos/{otherTags}", new { controller = "Photos", action = "Index", baseUrl = "/rachelemmett/photos", consistentTag = "rachelemmett", otherTags = "wedding" });
             routes.MapRoute("RachelEmmett", "rachelemmett/{page}", new { controller = "RachelEmmett", action = "Page", page = "Index" });
-            routes.MapRoute("News", "news/{tag}", new { controller = "News", action = "Index", tag = "default" });
+            routes.MapRoute("News", "news/{tag}", new { controller = "News", action = "Index", tag = "" });
             routes.MapRoute("RaceResultsEdit", "races/edit/{tag}", new { controller = "Races", action = "Edit", tag = "" });
             routes.MapRoute("RaceResults", "races/results", new { controller = "Races", action = "Results" });
             routes.MapRoute("Races", "races/{urlTitle}/{year}", new { controller = "Races", action = "Race", urlTitle = "", year = "" });
+            routes.MapRoute("Olympics", "olympics/{tag}", new { controller = "Olympics", action = "Index", tag = "" });
+            
+            
             routes.MapRoute("Account", "account/{action}/{filter}", new { controller = "Account", action = "Index", filter = "" });
             routes.MapRoute(
                 "Default", // Route name

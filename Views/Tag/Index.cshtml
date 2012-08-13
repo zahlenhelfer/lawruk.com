@@ -1,0 +1,17 @@
+﻿@model lawrukmvc.ViewModels.TagsViewModel
+       @{
+           ViewBag.Title = "Tags";           
+       }
+<ul>
+@foreach (lawrukmvc.ViewModels.TagViewModel tag in Model.Tags) {
+   <li>
+   @if (Model.Edit) {
+    <a href="/tags/edit/@tag.Tag.Id">Edit</a> 
+   }
+   @tag.Tag.Title   
+   </li>
+}
+</ul>
+
+@if (Model.Edit) { <a href="/tags/edit/0">Add New</a> }
+

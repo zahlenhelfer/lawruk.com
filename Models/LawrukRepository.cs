@@ -41,9 +41,8 @@ namespace lawrukmvc.Models
         }
 
         internal List<ListItem> GetVideoViewModels()
-        {
-            //Set up a list of ViewModels
-            List<lawrukmvc.ViewModels.VideoViewModel> viewModels = new List<lawrukmvc.ViewModels.VideoViewModel>();
+        {            
+            var viewModels = new List<VideoViewModel>();
             var videos = from v in lawrukEntities.Videos
                          orderby v.Date descending
                          select new ListItem()
@@ -55,6 +54,17 @@ namespace lawrukmvc.Models
                              Date = v.Date
                          };
             return videos.ToList();
+        }
+
+        internal List<TagViewModel> GetTagViewModels()
+        {
+            var viewModels = new List<TagViewModel>();
+            var tags = lawrukEntities.Tags;
+            foreach (var tag in tags)
+            {
+                viewModels.Add(new TagViewModel(tag));
+            }
+            return viewModels;
         }
 
         private static DateTime Midnight

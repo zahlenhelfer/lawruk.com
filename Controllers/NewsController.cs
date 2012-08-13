@@ -18,7 +18,7 @@ namespace lawrukmvc.Controllers
             tag = tag.ToLower();
             var rssFeeds = new List<TagTitleUrl>()
             {             
-             { new TagTitleUrl("default", "Latest News", "http://rss.news.yahoo.com/rss/topstories")},             
+             { new TagTitleUrl("latest", "Latest News", "http://rss.news.yahoo.com/rss/topstories")},             
              { new TagTitleUrl("golf channel","Golf Channel", "http://www.thegolfchannel.com/rss/?FeedID=NewsArchive")},
              
              { new TagTitleUrl("sports","Sports", "http://rss.news.yahoo.com/rss/sports")},
@@ -29,8 +29,31 @@ namespace lawrukmvc.Controllers
 
             var newsViewModel = new NewsViewModel();
             newsViewModel.RSSFeeds = rssFeeds;
-            newsViewModel.CurrentRSSFeed = rssFeeds.Find(r => r.Tag == tag);
-            return View(newsViewModel);
+            string view = "Index";
+            if (Helpers.Mobile.ShowMobileSite())
+            {
+                if (!string.IsNullOrEmpty(tag))
+                {
+                    view = "Detail";
+                }
+                else
+                {
+                    view = "Index.Mobile";
+                }
+            }
+            else
+            {
+                view = "Index";
+                if (string.IsNullOrEmpty(tag))
+                {
+                    tag = "latest";
+                }
+            }
+            if (!string.IsNullOrEmpty(tag))
+            {
+                newsViewModel.CurrentRSSFeed = rssFeeds.Find(r => r.Tag == tag);
+            }
+            return View(view, newsViewModel);
         }
     }
 }

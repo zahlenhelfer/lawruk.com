@@ -29,6 +29,11 @@ namespace lawrukmvc.Controllers
             return View(GetListModel(false));
         }
 
+        public ActionResult Tagged(string tag)
+        {
+            return View(GetTaggedList(tag));
+        }
+
         [Authorize]
         public virtual ActionResult Edit(string tag)
         {
@@ -86,6 +91,11 @@ namespace lawrukmvc.Controllers
         public abstract EntityObject PopulateItem(EntityObject item);       
 
         public abstract object GetListModel(bool editMode);
+
+        public virtual object GetTaggedList(string tag)
+        {
+            return View();
+        }
 
         protected override void HandleUnknownAction(string actionName)
         {

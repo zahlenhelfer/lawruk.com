@@ -1,0 +1,12 @@
+﻿@model lawrukmvc.ViewModels.NewsViewModel
+@using lawrukmvc.Helpers
+@{    
+    ViewBag.Title = "News";
+}
+
+<ul>
+    @foreach (var rssFeed in Model.RSSFeeds)
+       {
+    <li> <a href="/news/@rssFeed.Tag">@rssFeed.Title</a></li>
+    }
+</ul>

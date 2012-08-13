@@ -1,0 +1,65 @@
+﻿@model lawrukmvc.ViewModels.OlympicResultViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+<p>These results go back as far as the 1964 Olympics.</p>
+<table id="table1" class="table table-bordered table-striped table-condensed tablesorter">
+<thead style="background-color:#999; cursor:pointer;">
+<tr>
+<th>Place</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Time</th>
+<th>M/F</th>
+@if (Model.ShowEvent) { <td>Event</td> }
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+@foreach (var result in Model.Results)
+{
+<tr>
+<td>@result.Place</td>
+<td>@result.FirstName</td>
+<td>@result.LastName</td>
+<td>@result.Time</td>
+<td>@result.Gender</td>
+@if (Model.ShowEvent) { <td>@result.Event</td> }
+<td>@result.Year (@result.City)</td>
+</tr>
+
+}
+</tbody>
+</table>
+
+ <script type="text/javascript" src="/Scripts/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#table1").tablesorter({
+
+                headers:
+            {
+                0: { sorter: "shortDate" }
+            },
+                widgets: ['zebra']
+            });
+        }
+        ); 
+    </script>  
+
+    @section right
+{
+<h3>Filter By Event</h3>
+<ul>
+<li><a href="/olympics/top-us-olympic-long-distance-running-performances">All</a></li>
+@foreach(var ev in Model.Events)
+{
+    <li><a href="/olympics/top-us-olympic-@ev.ToLower()-performances">@ev</a></li>
+}
+</ul>
+<ul>
+<li><a href="/olympics/us-olympic-long-distance-running-medal-performances">Show Only Medals</a></li>
+</ul>
+}
+
