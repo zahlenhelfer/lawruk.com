@@ -30,6 +30,7 @@ namespace lawrukmvc.Controllers
            
             if (eventName.Contains("medal"))
             {
+                viewModel.ShowEvent = true; 
                 results = this.lawrukEntities.OlympicResults.Where(o=>o.Place <= 3);
                 viewModel.Title = "United States Olympic Long Distance Running Medal Performances";
             }
