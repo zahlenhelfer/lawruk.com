@@ -211,6 +211,18 @@ namespace lawrukmvc.Helpers
             return System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(s);
         }
 
+        public static TitleUrlListViewModel GetViewModelFromList(List<ITitleUrl> items)
+        {
+            var viewModel = new TitleUrlListViewModel();
+            viewModel.TitleUrls = items;
+            return viewModel;
+        }
+
+        public static List<ITitleUrl> ConvertMetroStations(List<MetroStation> stations)
+        {
+            return stations.Cast<ITitleUrl>().ToList();
+        }
+
 
 
     }

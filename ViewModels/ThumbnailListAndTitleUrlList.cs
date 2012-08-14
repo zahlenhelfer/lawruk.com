@@ -6,12 +6,10 @@ using System.Web.Mvc;
 
 namespace lawrukmvc.ViewModels
 {
-    public class OlympicResultViewModel
+    public class ThumbnailListAndTitleUrlList
     {
         public string Title { get; set; }
-        public List<OlympicResult> Results { get; set; }
-        public List<string> Events { get; set; }
-        public bool ShowEvent { get; set; }
+        public ThumbnailListViewModel ThumbnailListViewModel { get; set; }
         public TitleUrlListViewModel TitleUrlListViewModel { get; set; }
     }
 }

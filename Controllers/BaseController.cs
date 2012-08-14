@@ -26,7 +26,7 @@ namespace lawrukmvc.Controllers
 
         public ActionResult Index()
         {
-            return View(GetListModel(false));
+            return View(ListView, GetListModel(false));
         }
 
         public ActionResult Tagged(string tag)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using lawrukmvc.Models;
 using lawrukmvc.ViewModels;
 using System.Data;
 using System.Data.Objects.DataClasses;
@@ -10,16 +11,28 @@ using System.Data.Objects.DataClasses;
 namespace lawrukmvc.Controllers
 {
     public class VideoController : BaseController
-    {        
-
+    {
+        public VideoController()
+        {
+            this.ListView = "ThumbnailListAndTitleUrlList";
+        }
 
         public override object GetListModel(bool editMode)
         {
+            var listViewModel = new ThumbnailListAndTitleUrlList();
+            listViewModel.Title = "Videos";
+
             var videos = lawrukRepository.GetVideoViewModels();
             var thumbnailList = new ThumbnailListViewModel();
             thumbnailList.Items = videos;
             thumbnailList.EditMode = editMode;
-            return thumbnailList;
+            listViewModel.ThumbnailListViewModel = thumbnailList;
+
+            var titleUrlList = new TitleUrlListViewModel();
+            titleUrlList.Title = "Video Tags";
+            titleUrlList.TitleUrls = new List<ITitleUrl>();
+            listViewModel.TitleUrlListViewModel = titleUrlList;
+            return listViewModel;
         }
 
         public override object GetTaggedList(string tag)

@@ -53,6 +53,17 @@ namespace lawrukmvc.Controllers
             {
                 newsViewModel.CurrentRSSFeed = rssFeeds.Find(r => r.Tag == tag);
             }
+
+            var titleUrlList = new TitleUrlListViewModel();
+            titleUrlList.Title = "Other News";
+            titleUrlList.TitleUrls = new List<ITitleUrl>();
+            foreach (var rssFeed in newsViewModel.RSSFeeds)
+            {
+                var titleUrl = new TitleUrl(rssFeed.Title, "/news/" + rssFeed.Tag);
+                titleUrlList.TitleUrls.Add(titleUrl);
+            }            
+            newsViewModel.TitleUrlListViewModel = titleUrlList;
+
             return View(view, newsViewModel);
         }
     }

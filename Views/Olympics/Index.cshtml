@@ -48,21 +48,9 @@
         ); 
     </script>  
 
-    @section right
+@section right
 {
-<h3>Filter By Event</h3>
-<ul>
-<li><a href="/olympics/top-us-olympic-long-distance-running-performances">All</a></li>
-@foreach(var ev in Model.Events)
-{
-    <li><a href="/olympics/top-us-olympic-@ev.ToLower()-performances">@ev</a></li>
-}
-</ul>
-<ul>
-<li><a href="/olympics/us-olympic-long-distance-running-medal-performances">Show Only Medals</a></li>
-</ul>
-
+@Html.Partial("TitleUrlList", Model.TitleUrlListViewModel);
 @Html.Partial("GoogleAd160x600");
-
 }
 

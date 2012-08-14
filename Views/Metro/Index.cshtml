@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Metro Stations";
 }
+
 @model lawrukmvc.ViewModels.MetroStationsViewModel
 
 <table class="table table-bordered table-striped table-condensed tablesorter">
@@ -12,9 +13,9 @@
 <th>Green or Yellow <span class="circle circle-green">&nbsp;</span> <span class="circle circle-yellow">&nbsp;</span></th>
 </tr>
 <tr>
-<td>@Html.Partial("TitleUrlList", Model.RedStations.Cast<ITitleUrl>().ToList())</td>
-<td>@Html.Partial("TitleUrlList", Model.BlueOrangeStations.Cast<ITitleUrl>().ToList())</td>
-<td>@Html.Partial("TitleUrlList", Model.GreenYellowStations.Cast<ITitleUrl>().ToList())</td>
+<td>@Html.Partial("TitleUrlList", Helpers.ConvertMetroStations(Model.RedStations)</td>
+<td>@Html.Partial("TitleUrlList", Helpers.ConvertMetroStations(Model.BlueOrangeStations)</td>
+<td>@Html.Partial("TitleUrlList", Helpers.ConvertMetroStations(Model.GreenYellowStations)</td>
 </tr>
 </table>
 <br />

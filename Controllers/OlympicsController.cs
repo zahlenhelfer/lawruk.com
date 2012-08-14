@@ -50,6 +50,18 @@ namespace lawrukmvc.Controllers
             viewModel.Results = results.ToList();
             
             viewModel.Events = Events;
+
+            //Right Rail
+            var urlList = new List<ITitleUrl>();
+            urlList.Add(new TitleUrl("All", "/olympics/top-us-olympic-long-distance-running-performances"));
+            foreach(var ev in viewModel.Events)
+            {
+                urlList.Add(new TitleUrl(ev, "/olympics/top-us-olympic-" + ev.ToLower() + "-performances"));
+            }
+            urlList.Add(new TitleUrl("Show Only Medals", "/olympics/us-olympic-long-distance-running-medal-performances"));
+            viewModel.TitleUrlListViewModel = new TitleUrlListViewModel();
+            viewModel.TitleUrlListViewModel.Title = "Filter";
+            viewModel.TitleUrlListViewModel.TitleUrls = urlList;
             return View(viewModel);
         }
 

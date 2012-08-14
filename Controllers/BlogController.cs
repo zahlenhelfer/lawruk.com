@@ -12,8 +12,11 @@ using System.Data.Objects.DataClasses;
 namespace lawrukmvc.Controllers
 {
     public class BlogController : BaseController
-    {       
-        
+    {
+        public BlogController()
+        {
+            this.ListView = "ThumbnailListAndTitleUrlList";
+        }
 
         public override EntityObject PopulateItem(EntityObject item)
         {
@@ -46,10 +49,20 @@ namespace lawrukmvc.Controllers
 
         public override object GetListModel(bool editMode)
         {
+            var listViewModel = new ThumbnailListAndTitleUrlList();
+            listViewModel.Title = "Blog Posts";
+
             var thumbnailList = new ThumbnailListViewModel();
             thumbnailList.EditMode = editMode;
             thumbnailList.Items = lawrukRepository.GetBlogPostViewModels();
-            return thumbnailList;
+            listViewModel.ThumbnailListViewModel = thumbnailList;
+
+            var titleUrlList = new TitleUrlListViewModel();
+            titleUrlList.Title = "";
+            titleUrlList.TitleUrls = new List<ITitleUrl>();
+            listViewModel.TitleUrlListViewModel = titleUrlList;
+            return listViewModel;
+            
         }
     }
 }

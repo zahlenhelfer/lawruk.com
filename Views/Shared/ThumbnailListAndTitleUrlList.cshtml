@@ -1,0 +1,9 @@
+﻿@model lawrukmvc.ViewModels.ThumbnailListAndTitleUrlList
+@{
+    ViewBag.Title = Model.Title;
+}
+@Html.Partial("ThumbnailList", Model.ThumbnailListViewModel);
+@section right {
+@Html.Partial("TitleUrlList", Model.TitleUrlListViewModel);
+@Html.Partial("GoogleAd160x600");
+}

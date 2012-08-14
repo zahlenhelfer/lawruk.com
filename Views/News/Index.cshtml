@@ -1,17 +1,11 @@
 ﻿@model lawrukmvc.ViewModels.NewsViewModel
 @using lawrukmvc.Helpers
 @{
-    ViewBag.Title = "News " + Model.CurrentRSSFeed.Title;
+    ViewBag.Title = "News: " + Model.CurrentRSSFeed.Title;
 }
 @Html.Partial("RSSList", Helpers.GetRSSList(Model.CurrentRSSFeed.Url, 20))
 @section right
 {
-<h3>Other News</h3>
-<ul>
-    @foreach (var rssFeed in Model.RSSFeeds)
-       {
-    <li> <a href="/news/@rssFeed.Tag">@rssFeed.Title</a></li>
-    }
-</ul>
-
+@Html.Partial("TitleUrlList", Model.TitleUrlListViewModel);
+@Html.Partial("GoogleAd160x600");
 }

@@ -1,0 +1,12 @@
+﻿@model lawrukmvc.ViewModels.TitleUrlListViewModel
+
+@if(!string.IsNullOrEmpty(Model.Title))
+{
+<h3>@Model.Title</h3>
+}
+<ul>
+@foreach (var item in Model.TitleUrls)
+{
+  <li><a href="@item.Url">@item.Title</a></li>
+}
+</ul>

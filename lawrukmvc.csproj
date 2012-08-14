@@ -150,6 +150,7 @@
     <Compile Include="ViewModels\SyndicationItemViewModel.cs" />
     <Compile Include="ViewModels\TagsViewModel.cs" />
     <Compile Include="ViewModels\TagTitleUrlListViewModel.cs" />
+    <Compile Include="ViewModels\ThumbnailListAndTitleUrlList.cs" />
     <Compile Include="ViewModels\ThumbnailListViewModel.cs" />
     <Compile Include="ViewModels\TitleUrlListViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
@@ -171,7 +172,6 @@
     <Content Include="GenericError.htm" />
     <Content Include="Global.asax" />
     <Content Include="Helpers\MobileCapableRazorViewEngine.vb" />
-    <Content Include="Views\Blog\Detail.aspx" />
     <Content Include="Views\Blog\Edit.aspx" />
     <Content Include="Views\Calendar\Edit.aspx" />
     <Content Include="Views\Calendar\Index.aspx" />
@@ -184,7 +184,6 @@
     <Content Include="Views\Home\Rpx.aspx" />
     <Content Include="Views\Home\Running.aspx" />
     <Content Include="Views\Marc\Index.aspx" />
-    <Content Include="Views\Home\Weather.aspx" />
     <Content Include="Views\Photos\Index.aspx" />
     <Content Include="Views\Photos\Tag.aspx" />
     <Content Include="Views\Races\Edit.aspx" />
@@ -199,7 +198,6 @@
     <Content Include="Views\Shared\RSSList.ascx" />
     <Content Include="Views\Shared\TagTitleUrlList.aspx" />
     <Content Include="Views\Shared\TitleData.aspx" />
-    <Content Include="Views\Shared\TitleUrlList.ascx" />
     <Content Include="Views\Shared\TitleUrlListPage.aspx" />
     <Content Include="Views\Shared\TopMenu.ascx" />
     <Content Include="Views\Test\Index.aspx" />
@@ -229,8 +227,6 @@
     <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\LogOn.aspx" />
     <Content Include="Views\Account\Register.aspx" />
-    <Content Include="Views\Home\About.aspx" />
-    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
@@ -312,11 +308,6 @@
     <Content Include="Views\Home\Index.Mobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Blog\Index.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\_Layout.Mobile.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -335,9 +326,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\News\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Video\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\ThumbnailList.cshtml" />
@@ -368,6 +356,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Olympics\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\GoogleAd160x600.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Tagged.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ThumbnailListAndTitleUrlList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\TitleUrlList.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
