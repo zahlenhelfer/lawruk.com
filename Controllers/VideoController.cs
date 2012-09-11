@@ -68,6 +68,7 @@ namespace lawrukmvc.Controllers
         {
             Video video = item as Video;
             video.YouTubeId = Request.Params["youtubeid"];
+            video.Visibility = int.Parse(Request.Params["visibility"]);
             video.Title = Request.Params["title"];
             video.Date = DateTime.Parse(Request.Params["date"]);
             return video;

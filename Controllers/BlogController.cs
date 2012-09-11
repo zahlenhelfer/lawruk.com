@@ -23,6 +23,7 @@ namespace lawrukmvc.Controllers
             BlogPost blogPost = item as BlogPost;
             blogPost.Body = Request.Params["body"];
             blogPost.Title = Request.Params["title"];
+            blogPost.Visibility = int.Parse(Request.Params["visibility"]);
             blogPost.Date = DateTime.Parse(Request.Params["date"]);
             blogPost.FlickrImageUrl = Request.Params["flickrimageurl"];
             blogPost.LastModified = DateTime.Now;

@@ -218,11 +218,18 @@ namespace lawrukmvc.Helpers
             return viewModel;
         }
 
-        public static List<ITitleUrl> ConvertMetroStations(List<MetroStation> stations)
+        public static TitleUrlListViewModel ConvertMetroStations(List<MetroStation> stations)
         {
-            return stations.Cast<ITitleUrl>().ToList();
+            var viewModel = new TitleUrlListViewModel();
+            viewModel.TitleUrls = stations.Cast<ITitleUrl>().ToList();
+            return viewModel;
         }
 
+        //TODO use enum
+        public static int Visibility
+        {
+            get { return 0; }
+        }
 
 
     }

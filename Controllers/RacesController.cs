@@ -49,20 +49,13 @@ namespace lawrukmvc.Controllers
         public List<RaceViewModel> GetRaces()
         {
             var races = new List<RaceViewModel>();
-            PopulateFileRaces(races);
-            PopulateDatabaseRaces(races);
-            return races;
-        }
-
-        private void PopulateFileRaces(List<RaceViewModel> races)
-        {
             var di = new DirectoryInfo(WebConfigurationManager.AppSettings["RootDirectory"] + "\\Races");
             foreach (FileInfo fi in di.GetFiles())
             {
                 try
                 {
                     string name = fi.Name.ToLower();
-                    if (name.Contains("-allisononly") || name.Contains("-none"))
+                    if (name.Contains("-allison") || name.Contains("-none"))
                     {
                         continue;
                     }
@@ -85,23 +78,15 @@ namespace lawrukmvc.Controllers
                 }
                 catch { }
             }
-        }
 
-        private void PopulateDatabaseRaces(List<RaceViewModel> races)
-        {
             var raceResults = lawrukEntities.RaceResults;
             foreach (RaceResult raceResult in raceResults)
             {
-                //Remove duplicate file race
-                var duplicate = races.FirstOrDefault(r => r.Distance == raceResult.Distance && r.DateTime.Year == raceResult.Date.Year && r.DateTime.Day == raceResult.Date.Day);
-                if (duplicate != null)
-                {
-                    races.Remove(duplicate);
-                }
                 races.Add(new RaceViewModel(raceResult));
             }
-        }
 
+            return races;
+        }
 
         public override EntityObject NewItem()
         {

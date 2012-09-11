@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="lawrukModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="lawrukModelStoreContainer">
+    <EntitySet Name="BlogPost" EntityType="lawrukModel.Store.BlogPost" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BlogPostTag" EntityType="lawrukModel.Store.BlogPostTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CalendarEntry" EntityType="lawrukModel.Store.CalendarEntry" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FamousDeveloper" EntityType="lawrukModel.Store.FamousDeveloper" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OlympicResult" EntityType="lawrukModel.Store.OlympicResult" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Person" EntityType="lawrukModel.Store.Person" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RaceResult" EntityType="lawrukModel.Store.RaceResult" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Route" EntityType="lawrukModel.Store.Route" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="lawrukModel.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Video" EntityType="lawrukModel.Store.Video" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VideoTag" EntityType="lawrukModel.Store.VideoTag" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="BlogPost">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="smalldatetime" Nullable="false" />
+    <Property Name="LastModified" Type="smalldatetime" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Body" Type="varchar(max)" Nullable="false" />
+    <Property Name="FlickrImageUrl" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Visibility" Type="int" />
+  </EntityType>
+  <EntityType Name="BlogPostTag">
+    <Key>
+      <PropertyRef Name="BlogPostId" />
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="BlogPostId" Type="int" Nullable="false" />
+    <Property Name="TagId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CalendarEntry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Url" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Visibility" Type="int" />
+  </EntityType>
+  <EntityType Name="FamousDeveloper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Summary" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="StackOverflowUrl" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="WikipediaUrl" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Websites" Type="nvarchar" Nullable="false" MaxLength="400" />
+    <Property Name="Books" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="TwitterUrl" Type="nvarchar" Nullable="false" MaxLength="70" />
+    <Property Name="FacebookUrl" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PhotoUrl" Type="nvarchar" Nullable="false" MaxLength="300" />
+    <Property Name="PrimaryLanguage" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Nickname" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="OlympicResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Place" Type="int" Nullable="false" />
+    <Property Name="Event" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="City" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Time" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Gender" Type="varchar" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Url" Type="varchar" MaxLength="200" />
+    <Property Name="BirthdayYear" Type="int" />
+    <Property Name="BirthdayMonth" Type="int" />
+    <Property Name="BirthdayDay" Type="int" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="2" />
+    <Property Name="Zip" Type="varchar" MaxLength="5" />
+    <Property Name="CellPhone" Type="bigint" />
+    <Property Name="GoogleId" Type="varchar" MaxLength="50" />
+    <Property Name="YahooId" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RaceResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Distance" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Url" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="City" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="State" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="Date" Type="smalldatetime" Nullable="false" />
+    <Property Name="Seconds" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6005: The data type 'geography' is not supported; the column 'StartLocation' in table 'lawruk.dbo.Route' was excluded.
+      warning 6005: The data type 'geography' is not supported; the column 'EndLocation' in table 'lawruk.dbo.Route' was excluded.
+      -->
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Url" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Body" Type="varchar(max)" Nullable="false" />
+    <Property Name="Run" Type="bit" Nullable="false" />
+    <Property Name="Hike" Type="bit" Nullable="false" />
+    <Property Name="Distance" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="YouTubeId" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Date" Type="smalldatetime" Nullable="false" />
+    <Property Name="Visibility" Type="int" />
+  </EntityType>
+  <EntityType Name="VideoTag">
+    <Key>
+      <PropertyRef Name="VideoId" />
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="VideoId" Type="int" Nullable="false" />
+    <Property Name="TagId" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

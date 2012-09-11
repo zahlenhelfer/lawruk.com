@@ -28,6 +28,7 @@
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="Body" Type="varchar(max)" Nullable="false" />
           <Property Name="FlickrImageUrl" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Visibility" Type="int" />
         </EntityType>
         <EntityType Name="BlogPostTag">
           <Key>
@@ -46,6 +47,7 @@
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Url" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Visibility" Type="int" />
         </EntityType>
         <EntityType Name="FamousDeveloper">
           <Key>
@@ -144,6 +146,7 @@
           <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="YouTubeId" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="Visibility" Type="int" />
         </EntityType>
         <EntityType Name="VideoTag">
           <Key>
@@ -162,13 +165,13 @@
           <EntitySet Name="BlogPostTags" EntityType="lawrukmvc.Models.BlogPostTag" />
           <EntitySet Name="CalendarEntries" EntityType="lawrukmvc.Models.CalendarEntry" />
           <EntitySet Name="FamousDevelopers" EntityType="lawrukmvc.Models.FamousDeveloper" />
+          <EntitySet Name="OlympicResults" EntityType="lawrukmvc.Models.OlympicResult" />
           <EntitySet Name="People" EntityType="lawrukmvc.Models.Person" />
           <EntitySet Name="RaceResults" EntityType="lawrukmvc.Models.RaceResult" />
           <EntitySet Name="Routes" EntityType="lawrukmvc.Models.Route" />
           <EntitySet Name="Tags" EntityType="lawrukmvc.Models.Tag" />
           <EntitySet Name="Videos" EntityType="lawrukmvc.Models.Video" />
           <EntitySet Name="VideoTags" EntityType="lawrukmvc.Models.VideoTag" />
-          <EntitySet Name="OlympicResults" EntityType="lawrukmvc.Models.OlympicResult" />
         </EntityContainer>
         <EntityType Name="BlogPost">
           <Key>
@@ -180,6 +183,7 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FlickrImageUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Visibility" />
         </EntityType>
         <EntityType Name="BlogPostTag">
           <Key>
@@ -198,6 +202,7 @@
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="String" Name="Url" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="Visibility" />
         </EntityType>
         <EntityType Name="FamousDeveloper">
           <Key>
@@ -217,6 +222,20 @@
           <Property Type="String" Name="PhotoUrl" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PrimaryLanguage" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Nickname" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OlympicResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Place" Nullable="false" />
+          <Property Type="String" Name="Event" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Year" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Time" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -278,6 +297,7 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="YouTubeId" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Visibility" />
         </EntityType>
         <EntityType Name="VideoTag">
           <Key>
@@ -286,20 +306,6 @@
           </Key>
           <Property Type="Int32" Name="VideoId" Nullable="false" />
           <Property Type="Int32" Name="TagId" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OlympicResult">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="Place" Nullable="false" />
-          <Property Type="String" Name="Event" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="Year" Nullable="false" />
-          <Property Type="String" Name="City" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Time" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Gender" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -310,6 +316,7 @@
           <EntitySetMapping Name="BlogPosts">
             <EntityTypeMapping TypeName="lawrukmvc.Models.BlogPost">
               <MappingFragment StoreEntitySet="BlogPost">
+                <ScalarProperty Name="Visibility" ColumnName="Visibility" />
                 <ScalarProperty Name="FlickrImageUrl" ColumnName="FlickrImageUrl" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -330,6 +337,7 @@
           <EntitySetMapping Name="CalendarEntries">
             <EntityTypeMapping TypeName="lawrukmvc.Models.CalendarEntry">
               <MappingFragment StoreEntitySet="CalendarEntry">
+                <ScalarProperty Name="Visibility" ColumnName="Visibility" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -354,6 +362,21 @@
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OlympicResults">
+            <EntityTypeMapping TypeName="lawrukmvc.Models.OlympicResult">
+              <MappingFragment StoreEntitySet="OlympicResult">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -417,6 +440,7 @@
           <EntitySetMapping Name="Videos">
             <EntityTypeMapping TypeName="lawrukmvc.Models.Video">
               <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="Visibility" ColumnName="Visibility" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="YouTubeId" ColumnName="YouTubeId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -429,21 +453,6 @@
               <MappingFragment StoreEntitySet="VideoTag">
                 <ScalarProperty Name="TagId" ColumnName="TagId" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OlympicResults">
-            <EntityTypeMapping TypeName="lawrukmvc.Models.OlympicResult">
-              <MappingFragment StoreEntitySet="OlympicResult">
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Event" ColumnName="Event" />
-                <ScalarProperty Name="Place" ColumnName="Place" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -468,17 +477,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="LawrukModel" ZoomLevel="55">
-        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPost" Width="1.5" PointX="0.75" PointY="0.75" Height="2.172587890625" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPostTag" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583335" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.CalendarEntry" Width="1.5" PointX="0.75" PointY="3.75" Height="1.9802864583333322" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.FamousDeveloper" Width="1.5" PointX="2.75" PointY="3.75" Height="3.7109993489583335" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.Person" Width="1.5" PointX="4.75" PointY="0.75" Height="3.9033007812499996" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.RaceResult" Width="1.5" PointX="4.75" PointY="5.75" Height="2.5571907552083317" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.Route" Width="1.5" PointX="6.75" PointY="0.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.Tag" Width="1.5" PointX="6.75" PointY="4.75" Height="1.4033821614583317" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.Video" Width="1.5" PointX="6.75" PointY="7.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.VideoTag" Width="1.5" PointX="8.75" PointY="0.75" Height="1.4033821614583317" />
-        <EntityTypeShape EntityType="lawrukmvc.Models.OlympicResult" Width="1.5" PointX="0.75" PointY="8.75" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPost" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.BlogPostTag" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.CalendarEntry" Width="1.5" PointX="2.75" PointY="3.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.FamousDeveloper" Width="1.5" PointX="4.75" PointY="0.75" Height="3.7109993489583388" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.OlympicResult" Width="1.5" PointX="4.75" PointY="5.75" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Person" Width="1.5" PointX="6.75" PointY="0.75" Height="3.9033007812500031" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.RaceResult" Width="1.5" PointX="0.75" PointY="6.75" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Route" Width="1.5" PointX="6.75" PointY="5.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Tag" Width="1.5" PointX="8.75" PointY="0.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.Video" Width="1.5" PointX="8.75" PointY="3.75" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="lawrukmvc.Models.VideoTag" Width="1.5" PointX="8.75" PointY="6.75" Height="1.4033821614583282" />
       </Diagram>
     </Diagrams>
   </Designer>

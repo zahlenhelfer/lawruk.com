@@ -1,0 +1,6 @@
+C:\Users\lawruk\Documents\GitHub\lawruk.com\bin\lawrukmvc.dll
+C:\Users\lawruk\Documents\GitHub\lawruk.com\bin\lawrukmvc.pdb
+C:\Users\lawruk\Documents\GitHub\lawruk.com\bin\HtmlAgilityPack.xml
+C:\Users\lawruk\Documents\GitHub\lawruk.com\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\lawruk\Documents\GitHub\lawruk.com\obj\Debug\lawrukmvc.dll
+C:\Users\lawruk\Documents\GitHub\lawruk.com\obj\Debug\lawrukmvc.pdb

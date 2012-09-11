@@ -12,7 +12,9 @@
             <h3>Title:</h3>
             <%: Html.TextBox("title",Model.Title)%>
             <h3>Date:</h3>
-            <%: Html.TextBox("date", Model.Date)%>
+            <%: Html.TextBox("date", Model.Date)%> 
+            <h4>Visibility (0=public, 1=loggedin, 2=known,3=friends, 4=insiders, 10=admin</h4>
+            <%:Html.TextBox("visibility",Model.Visibility) %>
             <h3>Tags:</h3>
             <%: Html.TextBox("tags", "")%>
             <h3>Flickr Image Url:</h3>

@@ -132,6 +132,22 @@ namespace lawrukmvc
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<OlympicResult> OlympicResults
+        {
+            get
+            {
+                if ((_OlympicResults == null))
+                {
+                    _OlympicResults = base.CreateObjectSet<OlympicResult>("OlympicResults");
+                }
+                return _OlympicResults;
+            }
+        }
+        private ObjectSet<OlympicResult> _OlympicResults;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Person> People
         {
             get
@@ -224,22 +240,6 @@ namespace lawrukmvc
             }
         }
         private ObjectSet<VideoTag> _VideoTags;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<OlympicResult> OlympicResults
-        {
-            get
-            {
-                if ((_OlympicResults == null))
-                {
-                    _OlympicResults = base.CreateObjectSet<OlympicResult>("OlympicResults");
-                }
-                return _OlympicResults;
-            }
-        }
-        private ObjectSet<OlympicResult> _OlympicResults;
 
         #endregion
         #region AddTo Methods
@@ -274,6 +274,14 @@ namespace lawrukmvc
         public void AddToFamousDevelopers(FamousDeveloper famousDeveloper)
         {
             base.AddObject("FamousDevelopers", famousDeveloper);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the OlympicResults EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToOlympicResults(OlympicResult olympicResult)
+        {
+            base.AddObject("OlympicResults", olympicResult);
         }
     
         /// <summary>
@@ -322,14 +330,6 @@ namespace lawrukmvc
         public void AddToVideoTags(VideoTag videoTag)
         {
             base.AddObject("VideoTags", videoTag);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the OlympicResults EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToOlympicResults(OlympicResult olympicResult)
-        {
-            base.AddObject("OlympicResults", olympicResult);
         }
 
         #endregion
@@ -520,6 +520,30 @@ namespace lawrukmvc
         private global::System.String _FlickrImageUrl;
         partial void OnFlickrImageUrlChanging(global::System.String value);
         partial void OnFlickrImageUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Visibility
+        {
+            get
+            {
+                return _Visibility;
+            }
+            set
+            {
+                OnVisibilityChanging(value);
+                ReportPropertyChanging("Visibility");
+                _Visibility = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Visibility");
+                OnVisibilityChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Visibility;
+        partial void OnVisibilityChanging(Nullable<global::System.Int32> value);
+        partial void OnVisibilityChanged();
 
         #endregion
     
@@ -763,6 +787,30 @@ namespace lawrukmvc
         private global::System.Int32 _Type;
         partial void OnTypeChanging(global::System.Int32 value);
         partial void OnTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Visibility
+        {
+            get
+            {
+                return _Visibility;
+            }
+            set
+            {
+                OnVisibilityChanging(value);
+                ReportPropertyChanging("Visibility");
+                _Visibility = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Visibility");
+                OnVisibilityChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Visibility;
+        partial void OnVisibilityChanging(Nullable<global::System.Int32> value);
+        partial void OnVisibilityChanged();
 
         #endregion
     
@@ -2472,6 +2520,30 @@ namespace lawrukmvc
         private global::System.DateTime _Date;
         partial void OnDateChanging(global::System.DateTime value);
         partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Visibility
+        {
+            get
+            {
+                return _Visibility;
+            }
+            set
+            {
+                OnVisibilityChanging(value);
+                ReportPropertyChanging("Visibility");
+                _Visibility = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Visibility");
+                OnVisibilityChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Visibility;
+        partial void OnVisibilityChanging(Nullable<global::System.Int32> value);
+        partial void OnVisibilityChanged();
 
         #endregion
     

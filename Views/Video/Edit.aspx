@@ -12,6 +12,8 @@
             <h3>Title:</h3>
             <%: Html.TextBox("title",Model.Title)%>
             <h3>Date:</h3>
+            <h4>Visibility (0=public, 1=loggedin, 2=known,3=friends, 4=insiders, 10=admin (TODO consolidate with Blog Edit.aspx</h4>
+            <%:Html.TextBox("visibility",Model.Visibility) %>
             <%: Html.TextBox("date", Model.Date)%>
             <h3>Tags:</h3>
             <%: Html.TextBox("tags", "")%>

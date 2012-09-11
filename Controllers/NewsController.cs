@@ -16,9 +16,11 @@ namespace lawrukmvc.Controllers
         public ActionResult Index(string tag)
         {
             tag = tag.ToLower();
+            //TODO Refactor this
             var rssFeeds = new List<TagTitleUrl>()
             {             
-             { new TagTitleUrl("latest", "Latest News", "http://rss.news.yahoo.com/rss/topstories")},             
+             { new TagTitleUrl("latest", "Latest News", "http://rss.news.yahoo.com/rss/topstories")},       
+             { new TagTitleUrl("steelers", "Steelers", "http://www.steelersdepot.com/feed/")},
              { new TagTitleUrl("golf channel","Golf Channel", "http://www.thegolfchannel.com/rss/?FeedID=NewsArchive")},
              
              { new TagTitleUrl("sports","Sports", "http://rss.news.yahoo.com/rss/sports")},

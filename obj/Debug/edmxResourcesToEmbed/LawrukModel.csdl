@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="lawrukmvc.Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="lawrukEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BlogPosts" EntityType="lawrukmvc.Models.BlogPost" />
+    <EntitySet Name="BlogPostTags" EntityType="lawrukmvc.Models.BlogPostTag" />
+    <EntitySet Name="CalendarEntries" EntityType="lawrukmvc.Models.CalendarEntry" />
+    <EntitySet Name="FamousDevelopers" EntityType="lawrukmvc.Models.FamousDeveloper" />
+    <EntitySet Name="OlympicResults" EntityType="lawrukmvc.Models.OlympicResult" />
+    <EntitySet Name="People" EntityType="lawrukmvc.Models.Person" />
+    <EntitySet Name="RaceResults" EntityType="lawrukmvc.Models.RaceResult" />
+    <EntitySet Name="Routes" EntityType="lawrukmvc.Models.Route" />
+    <EntitySet Name="Tags" EntityType="lawrukmvc.Models.Tag" />
+    <EntitySet Name="Videos" EntityType="lawrukmvc.Models.Video" />
+    <EntitySet Name="VideoTags" EntityType="lawrukmvc.Models.VideoTag" />
+  </EntityContainer>
+  <EntityType Name="BlogPost">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="DateTime" Name="LastModified" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FlickrImageUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Visibility" />
+  </EntityType>
+  <EntityType Name="BlogPostTag">
+    <Key>
+      <PropertyRef Name="BlogPostId" />
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Type="Int32" Name="BlogPostId" Nullable="false" />
+    <Property Type="Int32" Name="TagId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CalendarEntry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="String" Name="Url" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Type" Nullable="false" />
+    <Property Type="Int32" Name="Visibility" />
+  </EntityType>
+  <EntityType Name="FamousDeveloper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Summary" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="StackOverflowUrl" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="WikipediaUrl" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Websites" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Books" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TwitterUrl" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FacebookUrl" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PhotoUrl" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PrimaryLanguage" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Nickname" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OlympicResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Place" Nullable="false" />
+    <Property Type="String" Name="Event" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Time" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Url" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="BirthdayYear" />
+    <Property Type="Int32" Name="BirthdayMonth" />
+    <Property Type="Int32" Name="BirthdayDay" />
+    <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="State" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Zip" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="CellPhone" />
+    <Property Type="String" Name="GoogleId" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="YahooId" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RaceResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Distance" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Url" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Int32" Name="Seconds" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Url" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Run" Nullable="false" />
+    <Property Type="Boolean" Name="Hike" Nullable="false" />
+    <Property Type="Double" Name="Distance" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="YouTubeId" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Int32" Name="Visibility" />
+  </EntityType>
+  <EntityType Name="VideoTag">
+    <Key>
+      <PropertyRef Name="VideoId" />
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Type="Int32" Name="VideoId" Nullable="false" />
+    <Property Type="Int32" Name="TagId" Nullable="false" />
+  </EntityType>
+</Schema>

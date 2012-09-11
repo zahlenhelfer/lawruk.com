@@ -18,7 +18,7 @@ namespace lawrukmvc.Controllers
             
             var buttons = new List<HomeButton>()
             {
-                new HomeButton("About","/about", "http://farm7.staticflickr.com/6185/6063252675_2f692fb5b7_m.jpg", "About Me"),
+                new HomeButton("About","/about", "http://farm8.staticflickr.com/7273/7503083928_a2974e2861_m.jpg", "About Me"),
                 new HomeButton("Metro", "/metro", "/content/i/metro.jpg", "Minutes until the train arrives for Metro stops that I care about"),
                 //new HomeButton("Resume", "http://careers.stackoverflow.com/lawruk", "http://www.savingthedream.org/_ui/images/persona-millenial.jpg", "Stackoverflow Resume"),
                 new HomeButton("Blog", "/blog", "http://farm7.static.flickr.com/6084/6142564278_5573968475_m.jpg", "Boring Blog Posts"),
