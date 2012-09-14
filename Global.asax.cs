@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Configuration;
 using EngageNet;
 using EngageNet.Mvc;
 
@@ -87,7 +88,7 @@ namespace lawrukmvc
             if (EngageProvider.Settings == null)
             {
                 EngageProvider.ApplicationDomain = "lawruk.rpxnow.com"; //TODO: set your site's Application Domain
-                EngageProvider.Settings = new EngageNetSettings("a00d4647b32434096f453a4a03358b12f8235eb1"); //TODO: set your API key
+                EngageProvider.Settings = new EngageNetSettings(WebConfigurationManager.AppSettings["RPXKey"]); //TODO: set your API key
             }
 
            
