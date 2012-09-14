@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using EngageNet;
+using EngageNet.Mvc;
 
 namespace lawrukmvc
 {
@@ -76,7 +78,19 @@ namespace lawrukmvc
             //ViewEngines.Engines.RemoveAt(0);
             //ViewEngines.Engines.Add(new Microsoft.Web.Mvc.MobileCapableRazorViewEngine());
             //ViewEngines.Engines.Add(new Microsoft.Web.Mvc.MobileCapableWebFormViewEngine());
+            StartEngage();
+        }
 
+        protected void StartEngage()
+        {
+            //TODO: you should move the setting of the static EngageProvider.Settings to your global.asax or other setup code
+            if (EngageProvider.Settings == null)
+            {
+                EngageProvider.ApplicationDomain = "lawruk.rpxnow.com"; //TODO: set your site's Application Domain
+                EngageProvider.Settings = new EngageNetSettings("a00d4647b32434096f453a4a03358b12f8235eb1"); //TODO: set your API key
+            }
+
+           
         }
 
 

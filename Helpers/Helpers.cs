@@ -228,7 +228,12 @@ namespace lawrukmvc.Helpers
         //TODO use enum
         public static int Visibility
         {
-            get { return 0; }
+            get {
+                var email = HttpContext.Current.Session["email"];
+                if (email != null)
+                    return email.ToString().Contains("lawruk") ? 10 : 0;
+                return 0;
+            }
         }
 
 

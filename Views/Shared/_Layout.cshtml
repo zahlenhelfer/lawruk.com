@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using EngageNet.Mvc.Html;
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -6,6 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     <link href="/content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    @Html.Engage().LogOnLinkScript()
+
 </head>
 <body>
 <div id="page-wrap" class="@ViewContext.RouteData.Values["Controller"].ToString().ToLower()-@ViewContext.RouteData.Values["Action"].ToString().ToLower()">
@@ -23,6 +26,7 @@
         <li><a href="/rome">Rome</a></li>
         <li><a href="/videos">Videos</a></li>
         <li><a href="/rachelemmett">Rachel and Emmett</a></li>
+        <li>@Html.Engage().LogOnLink("Log On", "ProcessLogOn", "Account")</li>
         </ul>
         </div>
     </div>
@@ -31,7 +35,7 @@
 <div class="container">
     <div>
         <div class="row">
-            <div class="span8">
+            <div class="span8">	
                 <h2>@ViewBag.Title</h2>        
                 @RenderBody()
             </div>

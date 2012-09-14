@@ -34,6 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EngageNet, Version=1.0.4605.29874, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EngageNet.dll</HintPath>
+    </Reference>
+    <Reference Include="EngageNet.Mvc, Version=1.0.4605.29877, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EngageNet.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\HtmlAgilityPack.dll</HintPath>

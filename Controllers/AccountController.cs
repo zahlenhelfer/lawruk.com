@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using lawrukmvc.Models;
-
+using EngageNet;
+using EngageNet.Mvc;
 namespace lawrukmvc.Controllers
 {
 
@@ -61,6 +62,22 @@ namespace lawrukmvc.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public RedirectToRouteResult ProcessLogOn(string token)
+        {
+            var _engage = EngageProvider.Build();
+
+            if (string.IsNullOrEmpty(token))
+                return RedirectToAction("Index", "Home");
+
+            var authenticationDetails = _engage.GetAuthenticationDetails(token, true);
+            FormsAuthentication.SetAuthCookie(authenticationDetails.Identifier, true);
+
+            // pass auth details to LogOnSuccess page so that it can be displayed (for demo/illustration purposes only)
+            Session["Email"] = authenticationDetails.Email;
+
+            return RedirectToAction("Index","Home");
         }
 
         // **************************************
