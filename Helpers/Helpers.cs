@@ -225,16 +225,7 @@ namespace lawrukmvc.Helpers
             return viewModel;
         }
 
-        //TODO use enum
-        public static int Visibility
-        {
-            get {
-                var email = HttpContext.Current.Session["email"];
-                if (email != null)
-                    return email.ToString().Contains("lawruk") ? 10 : 0;
-                return 0;
-            }
-        }
+        
 
 
     }

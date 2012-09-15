@@ -6,7 +6,7 @@
  I'm Jim Lawruk. I live in Bethesda, MD with my wonderful wife and daughter.
  I am Catholic, enjoy running, golf, and spending time with my family.  
  Feel free to contact me via <a href="http://www.linkedin.com/in/lawruk">LinkedIn</a>.</p>
- @if (lawrukmvc.Helpers.Helpers.Visibility > 0)
+ @if (lawrukmvc.Helpers.Account.Visibility > (int)lawrukmvc.Helpers.UserType.Known)
  {
  <p> 
  <img src="http://farm9.staticflickr.com/8424/7503055910_c8da413d9e_q.jpg" />

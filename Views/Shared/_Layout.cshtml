@@ -1,4 +1,5 @@
 ﻿@using EngageNet.Mvc.Html;
+@using lawrukmvc.Helpers;
 <!DOCTYPE html>
 
 <html>
@@ -26,7 +27,15 @@
         <li><a href="/rome">Rome</a></li>
         <li><a href="/videos">Videos</a></li>
         <li><a href="/rachelemmett">Rachel and Emmett</a></li>
-        <li>@Html.Engage().LogOnLink("Log On", "ProcessLogOn", "Account")</li>
+        @if (!lawrukmvc.Helpers.Account.LoggedIn)
+        {
+        <li>@Html.Engage().LogOnLink("Sign In", "ProcessLogOn", "Account")</li>
+        }
+        else
+        {
+        <li>@Html.Engage().LogOnLink("Sign Out", "LogOff", "Account")</li>
+        }
+        
         </ul>
         </div>
     </div>

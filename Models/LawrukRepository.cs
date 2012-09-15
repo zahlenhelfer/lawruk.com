@@ -14,7 +14,7 @@ namespace lawrukmvc.Models
         {
             //Set up a list of ViewModels
             List<lawrukmvc.ViewModels.BlogPostViewModel> viewModels = new List<lawrukmvc.ViewModels.BlogPostViewModel>();
-            var blogPosts = lawrukEntities.BlogPosts.Where(b=>b.Visibility <= Helpers.Helpers.Visibility).OrderByDescending(i => i.Date).ToList();
+            var blogPosts = lawrukEntities.BlogPosts.Where(b=>b.Visibility <= Helpers.Account.Visibility).OrderByDescending(i => i.Date).ToList();
             var items = new List<ListItem>();
             foreach (var b in blogPosts)
             {
@@ -43,7 +43,7 @@ namespace lawrukmvc.Models
         internal List<ListItem> GetVideoViewModels()
         {             
             var viewModels = new List<VideoViewModel>();
-            var videos = from v in lawrukEntities.Videos.Where(v=>v.Visibility <= Helpers.Helpers.Visibility)
+            var videos = from v in lawrukEntities.Videos.Where(v=>v.Visibility <= Helpers.Account.Visibility)
                          orderby v.Date descending
                          select new ListItem()
                          {
