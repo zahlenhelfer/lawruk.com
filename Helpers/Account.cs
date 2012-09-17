@@ -8,7 +8,7 @@ namespace lawrukmvc.Helpers
 {
     public class Account
     {
-        public static string Email
+        public static string Email 
         {
             get
             {
