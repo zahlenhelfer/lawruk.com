@@ -89,6 +89,7 @@ namespace lawrukmvc
             {
                 EngageProvider.ApplicationDomain = "lawruk.rpxnow.com"; //TODO: set your site's Application Domain
                 EngageProvider.Settings = new EngageNetSettings(WebConfigurationManager.AppSettings["RPXKey"]); //TODO: set your API key
+                
             }
 
            
@@ -119,6 +120,16 @@ namespace lawrukmvc
                 requestUrl = requestUrl.Replace("raceresults", "races/results");
                 Context.Response.StatusCode = 301;
                 Context.Response.Redirect(requestUrl + "?=redirect");
+            }
+            
+        }
+
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+            var requestUrl = Request.Url.ToString().ToLower();
+            if (!requestUrl.Contains("process") && System.Web.HttpContext.Current.Session != null)
+            {
+                Session["requestUrl"] = requestUrl;
             }
         }
     }

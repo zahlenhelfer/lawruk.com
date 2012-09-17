@@ -64,7 +64,7 @@ namespace lawrukmvc.Controllers
             return View(model);
         }
 
-        public RedirectToRouteResult ProcessLogOn(string token)
+        public ActionResult ProcessLogOn(string token)
         {
             var _engage = EngageProvider.Build();
 
@@ -76,7 +76,13 @@ namespace lawrukmvc.Controllers
 
             // pass auth details to LogOnSuccess page so that it can be displayed (for demo/illustration purposes only)
             Session["Email"] = authenticationDetails.Email;
+            Session["Name"] = authenticationDetails.DisplayName;
 
+            var redirectUrl = Session["requestUrl"];
+            if (redirectUrl != null)
+            {
+                return Redirect(redirectUrl.ToString());
+            }
             return RedirectToAction("Index","Home");
         }
 
