@@ -4,7 +4,9 @@
 }
 @if (!lawrukmvc.Helpers.Account.LoggedIn)
 {
-     <a class="btn btn-inverse" href="https://lawruk.rpxnow.com/openid/v2/signin?token_url=http%3a%2f%2fwww.lawruk.com%2faccount%2fProcessLogOn" onclick="return false;">Log In</a>
+    <div style="margin-top:10px; margin-bottom:10px;">
+        <a class="rpxnow btn btn-warning" href="https://lawruk.rpxnow.com/openid/v2/signin?token_url=http%3a%2f%2fwww.lawruk.com%2faccount%2fProcessLogOn" onclick="return false;">Log In</a>
+    </div>
 }
 @Html.Partial("ThumbnailList", Model.ThumbnailListViewModel);
 @section right {
