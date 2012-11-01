@@ -1,11 +1,8 @@
 ﻿@{
-    Layout = null;
-    
+    Layout = null;    
 }
 @model lawrukmvc.ViewModels.HomeViewModel
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Lawruk.com</title>
@@ -13,26 +10,13 @@
     <link href="/content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     <meta name="google-site-verification" content="_SMyEer-s_dCJB5IUPmUJQDEmyaElJUh3ffhYSkgLtU" />
-    <!--[if IE 9]>
-	        <link rel="stylesheet" media="screen" type="text/css" href="/Content/ie9.css" />
-    <![endif]-->
+    <!--[if IE 9]><link rel="stylesheet" media="screen" type="text/css" href="/Content/ie9.css" /><![endif]-->
 </head>
 <body>
-<style>
-.navbar .brand {font-size:26px;}
-.navbar-inner .container {width:920px;}
-.personaName { background-color:#1C1B1C; display:block; font-weight: bold; font-size:18px; color:White; text-align:center; padding:5px 0px 5px;
-               border-bottom-right-radius: 6px;border-bottom-left-radius: 6px;
-               }
-.nav-img {border-top-right-radius: 6px; border-top-left-radius: 6px;}
-.home-link:hover {opacity:0.7; }
-.personaName:hover {opacity:1; }
-</style>
 <div class="navbar">
     <div class="navbar-inner">
         <div class="container">
-        <a class="brand" href="#">Lawruk.com</a>
-        
+            <a class="brand" href="#">Lawruk.com</a>        
         </div>
     </div>
 </div>
@@ -43,14 +27,12 @@
             @foreach (var button in Model.HomeButtons)
             {
                 <div class="span4">           
-                    <a href="@button.Url" class="home-link" style="float:left; display:block; width:240px; height:200px; margin-bottom:20px; margin-left:10px; text-decoration:none;">
-										<img src="@button.ImageUrl" class="nav-img" alt="" role="presentation" style="display:block; width:100%;"/>
-										<span class="personaName">@button.Title</span>
-										</a>
+                    <a href="@button.Url" class="home-link">
+					    <img src="@button.ImageUrl" class="nav-img" alt="@button.Title" role="presentation"/>
+					    <span class="personaName">@button.Title</span>
+					</a>
                 </div>            
             }
-            
-            
         </div>
     </div>
 </div>
