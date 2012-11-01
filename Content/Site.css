@@ -4,7 +4,12 @@ p img {padding:0px 5px 0px 0px;}
 
 textarea {width:500px; height:700px;}
 
+/*Nav*/
 .navbar-inner .container {width:940px;}
+.navbar .brand {font-size:26px;}
+.navbar a.brand { padding:5px;}
+.navbar-inner .container {width:940px;}
+.navbar-inner .container ul {padding-top:2px;}
 
 #header { width:970px; margin:0 auto; overflow:hidden; padding:0 0 5px 0;}
 
@@ -49,9 +54,9 @@ ul#top-menu-list li a.selected { color:#cccccc !important;}
 
 .index img, .edit img {float:left;}
 
+
+
 /*Homepage*/
-.navbar .brand {font-size:26px;}
-.navbar-inner .container {width:920px;}
 .personaName { background-color:#1C1B1C; display:block; font-weight: bold; font-size:18px; color:White; text-align:center; padding:5px 0px 5px;
                border-bottom-right-radius: 6px;border-bottom-left-radius: 6px;}
 .nav-img {border-top-right-radius: 6px; border-top-left-radius: 6px; display:block; width:100%;}

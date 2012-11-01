@@ -29,11 +29,11 @@
         <li><a href="/rachelemmett">Rachel and Emmett</a></li>
         @if (!lawrukmvc.Helpers.Account.LoggedIn)
         {
-        <li class="rpx">@Html.Engage().LogOnLink("Sign In", "ProcessLogOn", "Account")</li>
+        <li class="rpx">@Html.Engage().LogOnLink("Log In", "ProcessLogOn", "Account")</li>
         }
         else
         {
-        <li class="rpx">@Html.ActionLink("Sign Out " + Session["Name"].ToString(), "LogOff", "Account")</li>
+        <li class="rpx">@Html.ActionLink("Log Out " + Session["Name"].ToString(), "LogOff", "Account")</li>
         }
         
         </ul>
