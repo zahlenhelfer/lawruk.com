@@ -24,6 +24,7 @@ namespace lawrukmvc.Controllers
             return View(GetDetailModel(id));
         }
 
+        [OutputCache(Duration=60, VaryByParam="none")]
         public ActionResult Index()
         {
             return View(ListView, GetListModel(false));
@@ -57,6 +58,7 @@ namespace lawrukmvc.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ActionName("Edit")]
+        [ValidateAntiForgeryToken(Salt="mysalt")]
         public ActionResult EditPost(string tag)
         {
             int id = int.Parse(tag);

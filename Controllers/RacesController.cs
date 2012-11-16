@@ -49,7 +49,12 @@ namespace lawrukmvc.Controllers
         public List<RaceViewModel> GetRaces()
         {
             var races = new List<RaceViewModel>();
-            var di = new DirectoryInfo(WebConfigurationManager.AppSettings["RootDirectory"] + "\\Races");
+            string path = WebConfigurationManager.AppSettings["RootDirectory"] + "\\Races";
+            if (Request.Url.Host.Contains("localhost"))
+            {
+                path = "C:\\Users\\lawruk\\Documents\\GitHub\\lawruk.com\\Races";
+            }
+            var di = new DirectoryInfo(path);
             foreach (FileInfo fi in di.GetFiles())
             {
                 try
@@ -82,6 +87,12 @@ namespace lawrukmvc.Controllers
             var raceResults = lawrukEntities.RaceResults;
             foreach (RaceResult raceResult in raceResults)
             {
+                var fileRace = races.FirstOrDefault(r=>r.Distance == raceResult.Distance && 
+                   r.DateTime.ToShortDateString() == raceResult.Date.ToShortDateString());
+                if (fileRace !=null)
+                {
+                    races.Remove(fileRace);
+                }
                 races.Add(new RaceViewModel(raceResult));
             }
 
@@ -90,7 +101,10 @@ namespace lawrukmvc.Controllers
 
         public override EntityObject NewItem()
         {
-            return new RaceResult();
+            var raceResult = new RaceResult();
+            var dateTime = DateTime.Now;
+            raceResult.Date = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
+            return raceResult;
         }
 
         public override EntityObject GetItem(int id)

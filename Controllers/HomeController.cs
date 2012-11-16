@@ -14,8 +14,12 @@ namespace lawrukmvc.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        public ActionResult Index() { 
-            
+        public ActionResult Index() {
+
+            var a = new System.Net.WebClient();
+            a.Encoding = System.Text.Encoding.UTF8;
+            var b = a.DownloadData("http://69.63.159.164/mandate/");
+            var c = a.DownloadData("http://mandate.heritage.org/");
             var buttons = new List<HomeButton>()
             {
                 new HomeButton("About","/about", "http://farm8.staticflickr.com/7273/7503083928_a2974e2861_m.jpg", "About Me"),

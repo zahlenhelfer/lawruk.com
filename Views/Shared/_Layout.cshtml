@@ -19,14 +19,14 @@
         <div class="container">
         <a class="brand" href="/">Lawruk.com</a>
         <ul class="nav">        
-        <li><a href="/about">About</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="/metro">Metro</a></li>
-        <li><a href="/weather">Weather</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/rome">Rome</a></li>
-        <li><a href="/videos">Videos</a></li>
-        <li><a href="/rachelemmett">Rachel and Emmett</a></li>
+        @RazorHelpers.LiLink("/about","About")
+        @RazorHelpers.LiLink("/news", "News")
+        @RazorHelpers.LiLink("/metro", "Metro")
+        @RazorHelpers.LiLink("/weather", "Weather")
+        @RazorHelpers.LiLink("/blog", "Blog")
+        @RazorHelpers.LiLink("/rome", "Rome")
+        @RazorHelpers.LiLink("/videos", "Videos")
+        @RazorHelpers.LiLink("/rachelemmett", "Rachel and Emmett")
         @if (!lawrukmvc.Helpers.Account.LoggedIn)
         {
         <li class="rpx">@Html.Engage().LogOnLink("Log In", "ProcessLogOn", "Account")</li>
@@ -68,4 +68,6 @@
     </script>   
 </body>
 </html>
+
+
 
