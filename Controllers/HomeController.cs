@@ -46,6 +46,7 @@ namespace lawrukmvc.Controllers
         }
              
         public ActionResult About() {return View(); }
+        public ActionResult Error() { throw new Exception("test error"); }
         public ActionResult News() { return View(); }
         public ActionResult Weather() { return View(); }
         public ActionResult NotFound() { return View("404"); }

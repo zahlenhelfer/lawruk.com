@@ -114,5 +114,5 @@ padding: 2px;
 .famousdeveloper .col1 {width:250px;}
 .famousdeveloper .col2 {vertical-align:top;}
 
-.calendar span {float:right; font-size:0.7em;}
-.calendar td {height:60px; font-size:0.9em; line-height:1.1em;}
+.calendar-index span {float:right; font-size:0.7em; display:block; }
+.calendar-index td {height:60px; font-size:0.9em; line-height:1.1em;}
