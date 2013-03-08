@@ -58,7 +58,7 @@ namespace lawrukmvc.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ActionName("Edit")]
-        [ValidateAntiForgeryToken(Salt="mysalt")]
+        //[ValidateAntiForgeryToken(Salt="mysalt")]
         public ActionResult EditPost(string tag)
         {
             int id = int.Parse(tag);

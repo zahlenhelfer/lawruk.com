@@ -1,8 +1,6 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "Sorry. An Error has occurred. It is not your fault.";
 }
-
-
-<h2>Error, 500, not sure what happened..</h2>
-<!--@Model.Exception.Message-->
+<h3>Details:</h3>
+<p>@Model.Exception.Message </p>
