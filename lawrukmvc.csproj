@@ -21,6 +21,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -194,8 +198,6 @@
     <Content Include="Views\Calendar\Mobile\Index.aspx" />
     <Content Include="Views\Data\Index.aspx" />
     <Content Include="Views\FamousDeveloper\Edit.aspx" />
-    <Content Include="Views\FamousDeveloper\Index.aspx" />
-    <Content Include="Views\FamousDeveloper\List.aspx" />
     <Content Include="Views\FamousDeveloper\Profile.aspx" />
     <Content Include="Views\Home\Rpx.aspx" />
     <Content Include="Views\Home\Running.aspx" />

@@ -32,17 +32,16 @@ namespace lawrukmvc.Controllers
         }
 
         private ActionResult GetViewModelList(List<FamousDeveloper> developers, string subTitle, string viewName = "")
-        {
-            ViewData["subTitle"] = subTitle;
-            var vms = new List<FamousDeveloperViewModel>();
+        {            
+            var vms = new List<ITitleUrl>();
             foreach (var dev in developers)
             {
                 vms.Add(new FamousDeveloperViewModel(dev));
             }
-            if (viewName == "")
-                return View(vms);
-            else
-                return View(viewName, vms);
+            var titleListViewModel = new TitleUrlListViewModel();
+            titleListViewModel.Title = "Developers";
+            titleListViewModel.TitleUrls = vms;
+            return View("TitleUrlList", titleListViewModel);
         }
 
         public ActionResult Profile(int p1)
