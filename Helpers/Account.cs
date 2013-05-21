@@ -38,7 +38,7 @@ namespace lawrukmvc.Helpers
       {
           get
           {
-              if (Email == "jimlawruk@yahoo.com")
+              if (Email == "jimlawruk@yahoo.com" || HttpContext.Current.User.Identity.IsAuthenticated)
               {
                   return UserType.Admin;
               }
