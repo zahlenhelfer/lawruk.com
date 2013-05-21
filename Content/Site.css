@@ -1,5 +1,8 @@
 ﻿.center {text-align:center;}
-
+p {
+    font-size: 15px;
+    line-height: 1.7em;
+}
 p img {padding:0px 5px 0px 0px;}
 
 textarea {width:500px; height:700px;}
