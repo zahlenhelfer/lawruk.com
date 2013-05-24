@@ -8,22 +8,16 @@ using OpenQA.Selenium.Firefox;
 namespace SeleniumTests
 {
     [TestClass]
-    public class WebTests
-    {
-        private IWebDriver driver;
-        private StringBuilder verificationErrors;
-        private string baseURL;
-        private bool acceptNextAlert = true;
+    public class WebTests : BaseTest
+    {       
 
         [TestMethod]
         public void TestMethod1()
         {
-            var driver = new FirefoxDriver();
-            var verificationErrors = new StringBuilder();
-            driver.Navigate().GoToUrl("http://www.lawruk.com");
-            Assert.AreEqual("", verificationErrors.ToString());
+            GoToUrl("/");            
+            AssertText(".brand", "Lawruk.com");
+            AssertText(".personaName", "About");
             driver.Quit();
-
         }
     }
 }
