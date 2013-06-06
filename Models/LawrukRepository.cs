@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using lawrukmvc.ViewModels;
+
 namespace lawrukmvc.Models
 {
     public class LawrukRepository
@@ -13,8 +14,13 @@ namespace lawrukmvc.Models
         public List<ListItem> GetBlogPostViewModels()
         {
             //Set up a list of ViewModels
-            List<lawrukmvc.ViewModels.BlogPostViewModel> viewModels = new List<lawrukmvc.ViewModels.BlogPostViewModel>();
-            var blogPosts = lawrukEntities.BlogPosts.Where(b=>b.Visibility <= Helpers.Account.Visibility).OrderByDescending(i => i.Date).ToList();
+            List<lawrukmvc.ViewModels.BlogPostViewModel> viewModels = new List<lawrukmvc.ViewModels.BlogPostViewModel>();           
+
+            var blogPosts = from bp in lawrukEntities.BlogPosts
+                            where bp.Visibility <= Helpers.Account.Visibility
+                            orderby bp.Date descending
+                            select new { bp.Id, bp.Title, bp.Date, bp.FlickrImageUrl };            
+            
             var items = new List<ListItem>();
             foreach (var b in blogPosts)
             {
@@ -22,16 +28,15 @@ namespace lawrukmvc.Models
                 item.UrlBasePath = "blog";
                 item.Title = b.Title;
                 item.Id = b.Id;
-                item.ThumbnailUrl = GetBlogThumbnailUrl(b);
+                item.ThumbnailUrl = GetBlogThumbnailUrl(b.FlickrImageUrl);
                 item.Date = b.Date;
                 items.Add(item);
             }           
             return items;
         }
 
-        private string GetBlogThumbnailUrl(BlogPost b)
-        {
-            string url = b.FlickrImageUrl;
+        private string GetBlogThumbnailUrl(string url)
+        {           
             if (string.IsNullOrEmpty(url))
             {
                 url = "http://farm7.static.flickr.com/6084/6142564278_5573968475.jpg";//default
