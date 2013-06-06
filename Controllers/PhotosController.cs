@@ -13,15 +13,7 @@ using lawrukmvc.ViewModels;
 namespace lawrukmvc.Controllers
 {
     public class PhotosController : Controller
-    {
-        //
-        // GET: /Photos/
-
-        //public ActionResult Index(string tag, string tags)
-        //{
-        //    IQueryable<Photo> photos = GetPhotosFromFlickr(tag + "," + tags);
-        //    return View(photos);
-        //}
+    {       
 
         public ActionResult Index(string baseUrl, string consistentTag, string otherTags)
         {
