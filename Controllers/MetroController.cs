@@ -26,7 +26,7 @@ namespace lawrukmvc.Controllers
         private MetroViewModel GetStation(string tag)
         {
             List<MetroStation> metroStations = GetStations();
-            tag = tag.ToLower().Replace("-", "").Replace("_", "");
+            tag = tag.ToLower().Replace("-", "").Replace("_", "");//allow missing hyphen
             var metroStation = metroStations.FirstOrDefault(m => m.Tag.Replace("-", "") == tag);            
             var viewModel = new MetroViewModel();
             viewModel.CurrentMetroStation = metroStation;
@@ -52,26 +52,16 @@ namespace lawrukmvc.Controllers
             string tables = HTMLParser.GetTables("http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=" + id.ToString());
             
             tables = tables.Replace("<img src=\"/img/icon-marble-","");
-
-            //TODO:foreach upper
+           
             string[] lines = new string[] { "red", "orange", "blue", "green", "yellow" };
             foreach (string line in lines)
             {
                 tables = tables.Replace(".gif\" alt=\"" + line + "\">","");
                 tables = tables.Replace(line, "<span class=\"circle circle-" + line + "\">&nbsp;</span>");            
             }
-            //tables = tables.Replace("Line", "LINE").Replace("Cars", "CARS").Replace("Destination", "DEST").Replace("Minutes", "MIN");
+            
             return tables;
-            //string html = "";
-            //string url = "http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=" + id.ToString();
-            //html = DownloadString(url);            
-            //int start = html.IndexOf("<table");
-            //int end = html.IndexOf("Last Data Update");
-            //html = html.Substring(start, end - start - 15);
-            //html = html.Replace("/img/", "http://www.wmata.com/img/");
-            //html = html.Replace("width: 300px;", "float:left; width: 300px;");
-            //html = html.Replace("margin: 10px auto;", "margin: 10px auto; margin-right:200px;");            
-            //return html;
+            
         }
 
         private List<MetroStation> GetStations()
@@ -87,7 +77,9 @@ namespace lawrukmvc.Controllers
                 {new MetroStation(10, "tenleytown-au","Tenleytown-AU",new MetroLine[] {MetroLine.Red})},
                 {new MetroStation(12, "bethesda","Bethesda",new MetroLine[] {MetroLine.Red})},
                 {new MetroStation(17 , "rockville","Rockville",new MetroLine[] {MetroLine.Red})},
+                {new MetroStation(21, "chinatown", "Gallery Place - Chinatown",new MetroLine[] {MetroLine.Red, MetroLine.Green, MetroLine.Yellow})},
                 {new MetroStation(41, "rosslyn","Rosslyn", new MetroLine[] {MetroLine.Orange, MetroLine.Blue})},
+                {new MetroStation(31, "silver-spring","Silver Spring", new MetroLine[] {MetroLine.Red})},
                 {new MetroStation(100, "east-falls-church","East Falls Church", new MetroLine[] {MetroLine.Orange})},
                 {new MetroStation(101, "west-falls-church","West Falls Church", new MetroLine[] {MetroLine.Orange})},
                 {new MetroStation(63, "stadium","Statium Armory", new MetroLine[] {MetroLine.Orange})},
@@ -99,9 +91,7 @@ namespace lawrukmvc.Controllers
                 {new MetroStation(85, "anacostia","Anacostia", new MetroLine[] {MetroLine.Green})},
                 {new MetroStation(14, "grosvenor","Grosvenor", new MetroLine[] {MetroLine.Red})}
              };
-            //metroStations.Add(new MetroStation(, MetroLine.Green));
-            //metroStations.Add(new MetroStation(85, "anacostia","Anacostia",MetroLine.Green));
-            //metroStations.Add(new MetroStation(14, "grosvenor","Grosvenor",MetroLine.Red));  
+           
             metroStations =  metroStations.OrderBy(s=>s.Title).ToList();
             return metroStations;
         }
