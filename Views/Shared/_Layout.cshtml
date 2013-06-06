@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <link href="/content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     @Html.Engage().LogOnLinkScript()
@@ -23,8 +23,7 @@
         @RazorHelpers.LiLink("/news", "News")
         @RazorHelpers.LiLink("/metro", "Metro")
         @RazorHelpers.LiLink("/weather", "Weather")
-        @RazorHelpers.LiLink("/blog", "Blog")
-        @RazorHelpers.LiLink("/rome", "Rome")
+        @RazorHelpers.LiLink("/blog", "Blog")        
         @RazorHelpers.LiLink("/videos", "Videos")
         @RazorHelpers.LiLink("/rachelemmett", "Rachel and Emmett")
         @if (!lawrukmvc.Helpers.Account.LoggedIn)
@@ -44,11 +43,11 @@
 <div class="container">
     <div>
         <div class="row">
-            <div class="span8">	
-                <h2>@ViewBag.Title</h2>        
+            <div class="span10">	
+                <h1>@ViewBag.Title</h1>        
                 @RenderBody()
             </div>
-            <div class="span4">
+            <div class="span2">
                 @RenderSection("right", required: false)                 
             </div>
         </div>

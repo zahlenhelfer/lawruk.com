@@ -1,12 +1,12 @@
 ﻿.center {text-align:center;}
 p {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7em;
 }
 
 li {
 line-height: 1.7em;
-font-size: 15px;
+font-size: 16px;
 }
 
 p img {padding:0px 5px 0px 0px;}
@@ -15,8 +15,9 @@ textarea {width:500px; height:700px;}
 
 /*Nav*/
 .navbar-inner .container {width:940px;}
-.navbar .brand {font-size:26px;}
-.navbar a.brand { padding:5px;}
+.navbar .brand {font-size:26px; margin-left:0px;}
+.navbar a.brand { padding:5px;padding-left:0px;}
+a.brand.home {margin-left:10px;}
 .navbar-inner .container {width:940px;}
 .navbar-inner .container ul {padding-top:2px;}
 
@@ -71,6 +72,7 @@ ul#top-menu-list li a.selected { color:#cccccc !important;}
 .nav-img {border-top-right-radius: 6px; border-top-left-radius: 6px; display:block; width:100%;}
 .home-link {float:left; display:block; width:240px; height:200px; margin-bottom:20px; margin-left:10px; text-decoration:none;}
 .home-link:hover {opacity:0.7;}
+a.home-link {text-decoration: none;}
 .personaName:hover {opacity:1; }
 
 .circle {-webkit-border-radius: 999px; -moz-border-radius: 999px; border-radius: 999px; display:inline-block; width: 15px; height: 15px; } 
@@ -96,7 +98,7 @@ ul.rss-list {margin-left:0px; margin-top:10px;}
 .home #description {clear:both; display:block;}
 .home .col-left, .home .col-right {width:50%; float:left; clear:right;}
 
-.blog-detail-date { font-size:12px; margin-top:-5px; margin-bottom:15px; color:#666666;}
+.blog-detail-date { font-size:14px; margin-top:10px; margin-bottom:15px; color:#666666;}
 
 .attribution {font-size:10px; clear:both; display:block;}
 
