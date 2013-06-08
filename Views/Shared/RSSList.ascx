@@ -3,7 +3,7 @@
 <ul class="rss-list">
 <%foreach (lawrukmvc.ViewModels.SyndicationItemViewModel item in Model) { %>
     <li>
-        <a href="<% =item.Url %>"><% =item.Title %></a><br />
+        <a href="<% =item.Url %>"><% =item.Title %></a>
         <div class="date"><% = item.DisplayDate %></div>
         <%if (item.DisplaySummary)
           { %>
