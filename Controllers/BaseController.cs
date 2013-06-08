@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using System.Data.Objects.DataClasses;
+using System.ServiceModel;
 
 namespace lawrukmvc.Controllers
 {
@@ -19,15 +20,22 @@ namespace lawrukmvc.Controllers
             ListView = "Index";           
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int id, string extension)
         {
-            return View(GetDetailModel(id));
+            var result = GetDetailModel(id);
+            if (extension == "json")
+                return Json(result, JsonRequestBehavior.AllowGet);
+            else
+                return View(result);
         }
-
-        [OutputCache(Duration=60, VaryByParam="none")]
-        public ActionResult Index()
+        
+        public ActionResult Index(string extension)
         {
-            return View(ListView, GetListModel(false));
+            var result = GetListModel(false);
+            if (extension == "json")
+                return Json(result, JsonRequestBehavior.AllowGet);
+            else
+                return View(ListView, GetListModel(false));
         }
 
         public ActionResult Tagged(string tag)

@@ -13,6 +13,10 @@ p img {padding:0px 5px 0px 0px;}
 
 textarea {width:500px; height:700px;}
 
+h1 {
+    margin-bottom: 15px;
+}
+
 /*Nav*/
 .navbar-inner .container {width:940px;}
 .navbar .brand {font-size:26px; margin-left:0px;}
@@ -57,7 +61,7 @@ ul#top-menu-list li a.selected { color:#cccccc !important;}
 
 .tags {font-size:14px; padding-bottom:15px;}
 
-.date {margin:5px 0px 5px 0px; color:#666666; font-size:12px;}
+.date {margin:5px 0px 10px 0px; color:#666666; font-size:12px; line-height:1.0em;}
 
 .no-border {border:0px;}
 .no-border th,.no-border td {border:0px;}
@@ -92,7 +96,10 @@ ul.rss-list img {margin-right:5px;}
 .family { color: #000000; background: #4444FF; font-weight: bold; }
 
 ul.rss-list {margin-left:0px; margin-top:10px;}
-.rss-list li {list-style-type:none;margin-bottom:20px; line-height:14px;}
+.rss-list li {list-style-type:none;margin-bottom:20px;}
+.rss-list a {
+    font-size: 18px;
+}
 
 
 .home #description {clear:both; display:block;}

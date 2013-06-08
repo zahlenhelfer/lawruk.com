@@ -139,7 +139,7 @@
     <Compile Include="Controllers\RachelEmmettController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Controllers\VideosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

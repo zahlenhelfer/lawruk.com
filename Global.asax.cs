@@ -30,14 +30,20 @@ namespace lawrukmvc
             routes.MapRoute("Photo Tags", "photos/{otherTags}", new { controller = "Photos", action = "Index", baseUrl = "/photos", consistentTag = "lawruk", otherTags = "jordan" });
             //routes.MapRoute("Weather", "weather/{city}", new { controller = "Home", action = "Weather", city = "" });
             routes.MapRoute("Blog", "blog", new { controller = "Blog", action = "Index" });
+            routes.MapRoute("BlogExtension", "blog.{extension}", new { controller = "Blog", action = "Index", extension = ""});
             routes.MapRoute("BlogEdit", "blog/edit/{tag}", new { controller = "Blog", action = "Edit", tag = "" });
+            routes.MapRoute("BlogDetailExtension", "blog/{id}/{tag}.{extension}", new { controller = "Blog", action = "Detail", id = 0, extension = "" });
             routes.MapRoute("BlogDetail", "blog/{id}/{tag}", new { controller = "Blog", action = "Detail", id = 0 });
+           
 
             routes.MapRoute("CalendarEdit", "calendar/edit/{tag}", new { controller = "Calendar", action = "Edit", tag = "" });
             routes.MapRoute("Calendar", "calendar/{tag}", new { controller = "Calendar", action = "Index", tag = "" });
-            routes.MapRoute("Videos", "videos", new { controller = "Video", action = "Index" });
-            routes.MapRoute("VideoEdit", "videos/edit/{tag}", new { controller = "Video", action = "Edit", tag = "" });
-            routes.MapRoute("VideoDetail", "videos/{id}/{tag}", new { controller = "Video", action = "Detail", id = 0 });
+            routes.MapRoute("Videos", "videos", new { controller = "Videos", action = "Index" });
+            routes.MapRoute("VideosExtension", "videos.{extension}", new { controller = "Videos", action = "Index", extension="" });
+            routes.MapRoute("VideoEdit", "videos/edit/{tag}", new { controller = "Videos", action = "Edit", tag = "" });
+            routes.MapRoute("VideoDetailExtension", "videos/{id}/{tag}.{extension}", new { controller = "Videos", action = "Detail", id = 0, extension = "" });
+            routes.MapRoute("VideoDetail", "videos/{id}/{tag}", new { controller = "Videos", action = "Detail", id = 0 });
+            
 
             routes.MapRoute("Tags", "tags", new { controller = "Tag", action = "Index" });
             routes.MapRoute("TagEdit", "tags/edit/{tag}", new { controller = "Tag", action = "Edit", tag = "" });
