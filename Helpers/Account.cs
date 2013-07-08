@@ -25,6 +25,11 @@ namespace lawrukmvc.Helpers
             get { return !string.IsNullOrEmpty(Email); }
         }
 
+        public static bool AdminLoggedIn
+        {
+            get { return lawrukmvc.Helpers.Account.UserType == lawrukmvc.Helpers.UserType.Admin; }
+        }
+
         //TODO use enum
         public static int Visibility
         {
